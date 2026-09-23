@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ami'coop, charte de marque</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="font-0" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300..800&display=swap">
+<link id="font-1" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..800&display=swap">
+<style>
+:root{
+  --paper:#FFFDF9; --cream:#F6E5D4; --forest:#074C39; --ink:#0E2A22; --muted:#4D635C;
+  --line:rgba(7,76,57,.16); --focus:#4458A4; --danger:#B3261E;
+  --accent:#074C39; --accent-ink:#FFFDF9;
+  --f-titre:'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;
+  --f-texte:'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1E19; --cream:#132F28; --ink:#F3E7DA; --muted:#A8BDB5;
+    --line:rgba(246,229,212,.16); --focus:#A1C1D1;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1E19; --cream:#132F28; --ink:#F3E7DA; --muted:#A8BDB5;
+  --line:rgba(246,229,212,.16); --focus:#A1C1D1;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 24px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-texte);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--focus);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--f-titre);margin:0;line-height:1.02;letter-spacing:-.02em}
+
+/* ---------- Structure ---------- */
+.shell{display:grid;grid-template-columns:220px minmax(0,1fr)}
+.rail{position:sticky;top:0;align-self:start;height:100vh;padding:28px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:28px;background:var(--paper);z-index:5}
+.rail-brand{font-family:var(--f-titre);font-weight:800;font-size:1.5rem;letter-spacing:-.03em;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px}
+.rail-brand img{height:34px;width:auto}
+.rail-brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);transition:background-color .4s}
+.rail ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.rail a.nl{display:block;padding:7px 10px;margin-left:-10px;border-radius:6px;text-decoration:none;color:var(--muted);font-size:.95rem}
+.rail a.nl:hover{color:var(--ink);background:var(--line)}
+.rail a.nl.is-here{color:var(--ink);font-weight:600;box-shadow:inset 3px 0 0 var(--accent)}
+.rail-foot{margin-top:auto;font-size:.8rem;color:var(--muted);line-height:1.45}
+main{min-width:0}
+.sec{padding:clamp(56px,8vw,112px) clamp(20px,5vw,80px)}
+.sec + .sec{border-top:1px solid var(--line)}
+.sec.tint{background:var(--cream)}
+.sec-head{max-width:64ch;margin-bottom:clamp(28px,4vw,48px)}
+.sec-head h2{font-size:clamp(2.3rem,5vw,4rem);font-weight:750;margin-bottom:.35em}
+.lede{font-size:1.12rem;color:var(--muted);margin:0;max-width:60ch}
+.sub{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:700;margin:clamp(40px,6vw,72px) 0 20px}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--accent);color:var(--accent-ink);min-height:min(92vh,880px);display:grid;grid-template-rows:1fr auto;gap:40px;padding:clamp(28px,5vw,64px) clamp(20px,5vw,80px);transition:background-color .5s ease,color .5s ease}
+.hero-mark{display:flex;align-items:center;min-height:240px}
+.hero-mark img{height:min(36vh,330px);width:auto;max-width:100%;object-fit:contain;object-position:left center}
+.wordmark{white-space:nowrap;font-family:var(--f-titre);font-weight:800;letter-spacing:-.045em;line-height:.9;font-size:clamp(4.2rem,15vw,11.5rem)}
+.wordmark .apos{display:inline-block;transform:translateY(-.04em)}
+.hero.intro-anim .hero-mark>*{animation:arrive .9s cubic-bezier(.2,.8,.2,1) both}
+@keyframes arrive{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.hero-foot{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:end}
+.hero-foot h1{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-bottom:.4em}
+.hero-foot p{margin:0;max-width:52ch;opacity:.88}
+.chips-label{font-size:.95rem;margin:0 0 10px;opacity:.85}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:.55em;border:1.5px solid currentColor;background:transparent;border-radius:999px;padding:.45em 1em .45em .6em;font-size:.93rem;line-height:1.2;transition:background-color .25s,color .25s}
+.chip i{width:14px;height:14px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(255,255,255,.5)}
+.chip.is-on{background:var(--accent-ink);color:var(--accent);border-color:var(--accent-ink)}
+.chips.on-paper .chip{color:var(--ink)}
+.chips.on-paper .chip.is-on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---------- Logo ---------- */
+.logo-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(260px,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.stage{position:relative;aspect-ratio:16/10;border-radius:6px;display:grid;place-items:center;padding:12%;transition:background-color .35s;border:1px solid var(--line)}
+.stage.bg-clair{background:#FFFDF9;color:#0E2A22}
+.stage.bg-vert{background:#074C39;color:#FFFDF9}
+.stage.bg-theme{background:var(--accent);color:var(--accent-ink)}
+.logo-box{position:relative;max-width:100%;display:grid;place-items:center}
+.logo-box img{height:clamp(110px,16vw,210px);width:auto;max-width:100%;object-fit:contain}
+.logo-box .wordmark{font-size:clamp(2.6rem,6vw,5rem)}
+.stage.zone-on .logo-box{outline:1.5px dashed currentColor;outline-offset:clamp(14px,3vw,34px)}
+.stage.zone-on .logo-box::after{content:"";position:absolute;inset:calc(-1 * clamp(14px,3vw,34px));background:repeating-linear-gradient(135deg,currentColor 0 1px,transparent 1px 9px);opacity:.12;pointer-events:none}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:.35em .9em;font-size:.9rem;color:var(--muted)}
+.seg button.is-on{background:var(--ink);color:var(--paper)}
+.check{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted);margin-left:6px}
+.check input{accent-color:var(--forest);width:17px;height:17px}
+.btn{display:inline-flex;align-items:center;gap:.5em;border:1.5px solid var(--ink);background:transparent;border-radius:999px;padding:.45em 1.1em;font-size:.92rem;font-weight:600}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.rules{display:flex;flex-direction:column;gap:18px}
+.rule{border-top:1.5px solid var(--ink);padding-top:12px}
+.rule h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;letter-spacing:0;font-family:var(--f-texte)}
+.rule p,.rule li{margin:0;color:var(--muted);font-size:.98rem}
+.rule ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+.files-edit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.files-edit .slot{aspect-ratio:16/9;background:#FFFDF9;border:1px solid var(--line);border-radius:6px}
+.files-edit .slot.on-dark{background:#074C39}
+.files-edit .slot.on-dark .ph{color:#F6E5D4;background:repeating-linear-gradient(135deg,rgba(246,229,212,.08) 0 2px,transparent 2px 12px)}
+.files-edit figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+
+.bad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.bad .mini{position:relative;aspect-ratio:4/3;border-radius:6px;background:#FFFDF9;color:#0E2A22;display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);padding:18%}
+
+.bad .mini .wordmark{font-size:1.5rem}
+.bad .mini{padding:12%}
+.bad .mini img{max-height:none;max-width:100%}
+.bad .mini::after{content:"";position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--danger) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M7 7l8 8M15 7l-8 8' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.bad p{margin:10px 0 0;font-size:.95rem}
+.t-etire>*{transform:scaleX(1.5) scaleY(.8)}
+.t-pivote>*{transform:rotate(-20deg)}
+.t-ombre>*{filter:drop-shadow(5px 7px 3px rgba(0,0,0,.5))}
+.t-couleur>*{filter:hue-rotate(150deg) saturate(2.2)}
+.t-couleur .wordmark{color:#E0368A;filter:none}
+.bad .mini.t-fond{background:repeating-conic-gradient(#F7BBB4 0 25%,#4458A4 0 50%) 0 0/26px 26px}
+
+/* ---------- Signature ---------- */
+.sig-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.sig-stage{border-radius:8px;border:1px solid var(--line);padding:clamp(24px,4vw,48px) clamp(16px,2.5vw,32px);display:flex;align-items:center;min-height:clamp(160px,20vw,260px);transition:background-color .3s}
+.sig-art{width:100%;flex:1;aspect-ratio:var(--r,12);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:var(--c);transition:background-color .3s}
+.sig-text{font-family:var(--f-titre);font-size:clamp(1.6rem,4vw,3rem);font-weight:700;text-align:center;line-height:1.1}
+.sig-tools{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:16px}
+.sig-tools .lbl{font-weight:600;font-size:.95rem}
+.sig-note{font-size:.9rem;color:var(--muted)}
+.sig-uses{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(16px,3vw,28px);align-items:start}
+.use figcaption{font-size:.88rem;color:var(--muted);margin-top:10px}
+.use-site{border-radius:6px;overflow:hidden;box-shadow:0 1px 2px rgba(14,42,34,.12),0 12px 32px -12px rgba(14,42,34,.35);background:#FFFDF9}
+.use-site .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:var(--accent);color:var(--accent-ink);transition:background-color .4s}
+.use-site .bar img{height:28px;width:auto}
+.use-site .bar .s{height:16px;width:46%;-webkit-mask:var(--m) right center/contain no-repeat;mask:var(--m) right center/contain no-repeat;background:currentColor}
+.use-site .body{padding:22px 20px 26px;color:#0E2A22}
+.use-site .body b{display:block;font-family:var(--f-titre);font-size:1.5rem;line-height:1.05;color:#074C39;margin-bottom:8px}
+.use-site .body span{display:block;height:8px;border-radius:4px;background:#F6E5D4;margin-top:8px}
+.use-mail{border-radius:6px;background:#FFFDF9;color:#0E2A22;padding:20px;box-shadow:0 1px 2px rgba(14,42,34,.12),0 12px 32px -12px rgba(14,42,34,.35);font-size:.9rem;line-height:1.45}
+.use-mail .who{font-weight:700}
+.use-mail .row{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid #E9D9C8}
+.use-mail .row img{height:34px;width:auto}
+.use-mail .s{flex:1;height:14px;-webkit-mask:var(--m) left center/contain no-repeat;mask:var(--m) left center/contain no-repeat;background:#074C39}
+.mk-post .sig-mini{height:13px;width:62%;-webkit-mask:var(--m) left center/contain no-repeat;mask:var(--m) left center/contain no-repeat;background:currentColor}
+@media (max-width:980px){.sig-grid,.sig-uses{grid-template-columns:1fr}}
+
+/* ---------- Déclinaisons ---------- */
+.alt-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,3vw,32px)}
+.alt .slot{aspect-ratio:1;background:#FFFDF9;border:1px solid var(--line);border-radius:6px}
+.alt .slot img{max-height:62%;max-width:78%;object-fit:contain}
+@media (max-width:1100px){.alt-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.alt h3{font-size:1.4rem;font-weight:700;margin:16px 0 6px}
+.alt p{margin:0;color:var(--muted)}
+
+/* ---------- Slots images ---------- */
+.slot{position:relative;display:grid;place-items:center;overflow:hidden}
+.slot img{max-width:100%;max-height:100%;object-fit:contain}
+.ph{width:100%;height:100%;display:grid;place-items:center;text-align:center;padding:16px;font-size:.9rem;color:#4D635C;background:repeating-linear-gradient(135deg,rgba(7,76,57,.06) 0 2px,transparent 2px 12px)}
+.slot-tools{position:absolute;left:10px;bottom:10px;display:flex;gap:6px;z-index:2}
+.slot-tools button,.del{border:0;border-radius:999px;background:#0E2A22;color:#FFFDF9;padding:.4em .9em;font-size:.82rem;font-weight:600;box-shadow:0 1px 0 rgba(0,0,0,.2)}
+.slot-tools button + button,.del{background:#FFFDF9;color:#B3261E;border:1.5px solid #B3261E}
+.add{display:flex;align-items:center;justify-content:center;gap:.5em;border:1.5px dashed var(--muted);background:transparent;border-radius:6px;padding:14px 18px;color:var(--muted);font-weight:600;font-size:.95rem;min-height:56px}
+.add:hover{color:var(--ink);border-color:var(--ink)}
+
+/* ---------- Couleurs ---------- */
+.ratio-bar{display:flex;height:64px;border-radius:6px;overflow:hidden;margin-bottom:10px;border:1px solid var(--line)}
+.ratio-bar span{display:flex;align-items:flex-end;padding:8px 10px;font-size:.8rem;font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;transition:flex-basis .3s}
+.ratio-note{font-size:.9rem;color:var(--muted);margin:0 0 36px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px}
+.sw{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);display:flex;flex-direction:column}
+.sw-color{aspect-ratio:5/4;padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.sw-color h3{font-size:1.5rem;font-weight:700}
+.sw-color .part{font-family:var(--f-titre);font-size:.95rem;font-weight:600}
+.sw-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.sw-role{margin:0;font-size:.93rem;color:var(--muted)}
+.codes{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;font-size:.88rem}
+.codes dt{color:var(--muted)}
+.codes dd{margin:0}
+.copy{border:0;background:transparent;padding:2px 6px;margin-left:-6px;border-radius:4px;font-variant-numeric:tabular-nums;text-align:left}
+.copy:hover{background:var(--line)}
+.hexedit{display:flex;gap:8px;align-items:center}
+.hexedit input[type=color]{width:38px;height:32px;border:1px solid var(--line);border-radius:6px;padding:0;background:none}
+.hexedit input[type=text]{width:100px;border:1px solid var(--line);border-radius:6px;padding:5px 8px;font:inherit;font-size:.9rem;background:var(--paper);color:var(--ink)}
+.matrix-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+.matrix{border-collapse:collapse;min-width:860px;width:100%}
+.matrix th{font-weight:600;font-size:.85rem;text-align:left;padding:10px;color:var(--muted);background:var(--paper)}
+.matrix th[scope=row]{white-space:nowrap}
+.matrix td{padding:0;border:1px solid rgba(0,0,0,.05)}
+.cell{height:86px;display:flex;flex-direction:column;justify-content:space-between;padding:8px 10px}
+.cell b{font-family:var(--f-titre);font-size:1.7rem;font-weight:700;line-height:1}
+.cell small{white-space:nowrap;align-self:flex-start;font-size:.75rem;font-weight:600;background:#FFFDF9;color:#0E2A22;padding:1px 7px;border-radius:999px}
+.cell.ko b{opacity:.55}
+.cell.ko small{background:#B3261E;color:#fff}
+.cell.mid small{background:#F6E5D4}
+.cell.same{background:repeating-linear-gradient(135deg,rgba(0,0,0,.04) 0 2px,transparent 2px 10px)!important}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:.9rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.legend .l1::before{background:#FFFDF9;border:1.5px solid #0E2A22}
+.legend .l2::before{background:#F6E5D4;border:1.5px solid #0E2A22}
+.legend .l3::before{background:#B3261E}
+
+/* ---------- Typo ---------- */
+.tester{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:28px}
+.tester label{font-weight:600}
+.tester input[type=text]{flex:1;min-width:220px;border:1.5px solid var(--ink);border-radius:999px;padding:.6em 1.1em;font:inherit;background:var(--paper);color:var(--ink)}
+.tester input[type=range]{accent-color:var(--forest)}
+.specs{display:grid;gap:clamp(20px,3vw,32px)}
+.spec{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:clamp(18px,4vw,48px);border-top:1.5px solid var(--ink);padding-top:22px}
+.spec-sample{overflow-wrap:anywhere}
+.spec-0 .spec-sample{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.98;letter-spacing:-.03em}
+.spec-1 .spec-sample{font-size:clamp(1.15rem,1.8vw,1.4rem);line-height:1.55;max-width:58ch}
+.spec-meta h3{font-size:1.35rem;font-weight:700;margin-bottom:8px}
+.spec-meta p{margin:0 0 6px;font-size:.93rem;color:var(--muted)}
+.glyphs{margin-top:14px;font-size:1.15rem;letter-spacing:.02em;color:var(--ink);word-break:break-all}
+.scale{display:flex;flex-direction:column}
+.scale-row{display:grid;grid-template-columns:180px minmax(0,1fr) auto;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.scale-row .nm{font-size:.9rem;color:var(--muted)}
+.scale-row .sz{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.scale-row .demo{line-height:1.15;overflow-wrap:anywhere}
+
+/* ---------- Éléments graphiques ---------- */
+.pattern-tool{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr);gap:clamp(20px,4vw,48px);align-items:start}
+.pattern-view{position:relative;height:clamp(260px,40vw,420px);border-radius:8px;overflow:hidden;border:1px solid var(--line);transition:background-color .3s}
+.pattern-layer{position:absolute;inset:0;-webkit-mask-repeat:repeat;mask-repeat:repeat;transition:background-color .3s}
+.provisoire{position:absolute;left:12px;bottom:12px;background:#FFFDF9;color:#0E2A22;font-size:.8rem;padding:3px 10px;border-radius:999px}
+.ctl{margin-bottom:22px}
+.ctl h3{font-family:var(--f-texte);font-size:1rem;font-weight:700;letter-spacing:0;margin-bottom:10px}
+.dots{display:flex;flex-wrap:wrap;gap:8px}
+.dots button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);padding:0}
+.dots button.is-on{box-shadow:0 0 0 3px var(--paper),0 0 0 5.5px var(--ink)}
+.ctl input[type=range]{width:100%;accent-color:var(--forest)}
+.el-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.el .slot{aspect-ratio:4/3;border-radius:6px;background:#FFFDF9;border:1px solid var(--line)}
+.el h3{font-size:1.2rem;font-weight:700;margin:12px 0 4px}
+.el p{margin:0;font-size:.95rem;color:var(--muted)}
+
+/* ---------- Symboles ---------- */
+.sym-tools{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;margin-bottom:26px}
+.sym-tools .lbl{font-weight:600}
+.sym-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.sym .art-wrap{position:relative;aspect-ratio:1;border-radius:8px;display:grid;place-items:center;background:var(--sym-bg,#FFFDF9);border:1px solid var(--line);transition:background-color .3s}
+.sym .art{width:62%;height:62%;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:var(--sym-fg,#074C39);transition:background-color .3s}
+.sym:nth-child(2) .art{width:78%;height:78%}
+.sym h3{font-size:1.25rem;font-weight:700;margin:14px 0 4px}
+.sym p{margin:0;font-size:.95rem;color:var(--muted)}
+.sym .slot{position:absolute;inset:0;background:transparent}
+.sym .slot img,.sym .slot .ph{opacity:0}
+.callouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:900px}
+.callout{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;background:#FFFDF9;color:#0E2A22;border-radius:8px;padding:18px 20px;border-left:6px solid var(--accent);transition:border-color .4s}
+.callout .ic{width:56px;height:56px;border-radius:50%;background:var(--accent);display:grid;place-items:center;transition:background-color .4s}
+.callout .ic i{width:34px;height:34px;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:var(--accent-ink)}
+.callout h4{font-size:1.15rem;font-weight:700;margin:4px 0 6px;color:#074C39}
+.callout p{margin:0;font-size:.97rem;line-height:1.5}
+.mk-post .mascot-peek{position:absolute;right:18px;bottom:46px;width:92px;height:92px;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:currentColor;opacity:.9;transform:rotate(-8deg)}
+@media (max-width:980px){.sym-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.callouts{grid-template-columns:1fr}}
+
+/* ---------- Moodboard ---------- */
+.mood-filter{margin-bottom:24px}
+.mood{columns:3 250px;column-gap:16px}
+.mood-item{break-inside:avoid;margin:0 0 16px;position:relative}
+.mood-item .slot{border-radius:6px}
+.mood-item .slot img{width:100%;max-height:none}
+.tile{border-radius:6px;padding:24px;display:flex;align-items:flex-end;font-family:var(--f-titre);font-weight:650;font-size:1.45rem;line-height:1.1;letter-spacing:-.01em}
+.mood-item figcaption{margin-top:8px;font-size:.9rem;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
+.mood-item figcaption .tag{font-size:.78rem;border:1px solid var(--line);border-radius:999px;padding:0 8px}
+.mood-item .del{position:absolute;top:10px;right:10px;z-index:3}
+
+/* ---------- Thématiques ---------- */
+.themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:clamp(40px,6vw,64px)}
+.theme{position:relative;display:flex;flex-direction:column;border:1.5px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);text-align:left;padding:0;transition:border-color .2s,transform .2s}
+.theme.is-on{border-color:var(--ink);transform:translateY(-3px)}
+.theme-band{height:64px;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 14px;font-size:.82rem;font-weight:600}
+.theme-body{padding:14px 16px 18px}
+.theme-body h3{font-size:1.25rem;font-weight:700;margin-bottom:6px}
+.theme-body p{margin:0 0 8px;font-size:.93rem;color:var(--muted)}
+.theme-body .ex{font-size:.88rem;color:var(--ink);margin-bottom:0}
+.theme-body .ex em{font-style:normal;color:var(--muted)}
+.doms{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.dom{font:inherit;font-size:.8rem;border:1.2px solid var(--line);background:transparent;border-radius:999px;padding:3px 10px;color:var(--ink);display:inline-flex;gap:4px;align-items:center}
+button.dom:hover{border-color:var(--ink)}
+.dom.is-on{background:var(--dc);color:#FFFDF9;border-color:var(--dc)}
+.dom .del{padding:0 6px;font-size:.75rem}
+.theme .edit-row{padding:0 16px 16px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.mock-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:end;margin-bottom:24px}
+.mocks{display:flex;flex-wrap:wrap;gap:clamp(18px,3vw,32px);align-items:flex-end}
+.mock figcaption{font-size:.88rem;color:var(--muted);margin-top:10px}
+.mk{position:relative;overflow:hidden;border-radius:4px;box-shadow:0 1px 2px rgba(14,42,34,.12),0 12px 32px -12px rgba(14,42,34,.35);color:#0E2A22;background:#FFFDF9}
+.mk .motif{position:absolute;-webkit-mask-repeat:repeat;mask-repeat:repeat;pointer-events:none}
+.mk-cover{width:250px;aspect-ratio:210/297;display:flex;flex-direction:column}
+.mk-cover .top{position:relative;height:46%;background:var(--accent);color:var(--accent-ink);padding:16px;transition:background-color .4s}
+.mk-cover .top .motif{inset:0;background:currentColor;opacity:.16}
+.mk-tag{position:relative;display:inline-block;font-size:9.5px;font-weight:700;border:1.2px solid currentColor;border-radius:999px;padding:2px 8px}
+.mk-cover .body{padding:16px;display:flex;flex-direction:column;flex:1;background:#F6E5D4}
+.mk-cover .kicker{font-size:9.5px;color:#4D635C;margin:0 0 6px}
+.mk-cover h4{font-size:19px;font-weight:750;line-height:1.05;color:#074C39}
+.mk-cover .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:end;font-size:8.5px;color:#4D635C}
+.mk-logo img{height:24px;width:auto}
+.mk-logo .wordmark{font-size:17px;letter-spacing:-.03em}
+.mk-post{width:300px;aspect-ratio:1;background:var(--accent);color:var(--accent-ink);padding:24px;display:flex;flex-direction:column;justify-content:space-between;transition:background-color .4s}
+.mk-post .motif{right:-30px;top:-30px;width:150px;height:150px;background:currentColor;opacity:.2;border-radius:50%}
+.mk-post p{position:relative;margin:0;font-family:var(--f-titre);font-weight:750;font-size:27px;line-height:1.02;letter-spacing:-.02em}
+.mk-post .foot{position:relative;display:flex;justify-content:space-between;align-items:end;gap:12px;font-size:11px;font-weight:600}
+.mk-att{width:360px;aspect-ratio:297/210;display:grid;grid-template-columns:18px 1fr;background:#FFFDF9}
+.mk-att .stripe{background:var(--accent);transition:background-color .4s}
+.mk-att .in{padding:18px 20px;display:flex;flex-direction:column}
+.mk-att .kicker{font-size:9px;color:#4D635C;margin:0}
+.mk-att h4{font-size:20px;font-weight:750;color:#074C39;margin:4px 0 12px}
+.mk-att p{margin:0;font-size:10px;color:#0E2A22;line-height:1.45}
+.mk-att .ttl{font-family:var(--f-titre);font-weight:700;font-size:14px;margin:4px 0 8px;line-height:1.1}
+.mk-att .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:end}
+.mk-att .mk-tag{color:#0E2A22}
+
+/* ---------- Pied ---------- */
+.foot-band{background:#074C39;color:#F6E5D4;padding:clamp(40px,6vw,72px) clamp(20px,5vw,80px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
+.foot-band p{margin:0 0 6px;max-width:60ch}
+.foot-band .small{font-size:.88rem;opacity:.8}
+.foot-band .btn{border-color:#F6E5D4;color:#F6E5D4}
+.foot-band .btn:hover{background:#F6E5D4;color:#074C39}
+
+/* ---------- Édition ---------- */
+.edit-toggle{position:fixed;right:18px;bottom:18px;padding-bottom:env(safe-area-inset-bottom,0px);z-index:30;display:none}
+.edit-toggle button{border:0;border-radius:999px;background:#0E2A22;color:#FFFDF9;padding:.8em 1.3em;font-weight:700;box-shadow:0 8px 24px -8px rgba(0,0,0,.5)}
+.editbar{position:fixed;left:0;right:0;top:0;padding-top:env(safe-area-inset-top,0px);background:#0E2A22;color:#F6E5D4;z-index:40;display:none}
+.editbar .in{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px clamp(16px,3vw,28px);flex-wrap:wrap}
+.editbar p{margin:0;font-size:.9rem}
+.editbar .acts{display:flex;gap:8px}
+.editbar button{border-radius:999px;padding:.45em 1.1em;font-weight:700;font-size:.9rem;border:1.5px solid #F6E5D4;background:transparent;color:#F6E5D4}
+.editbar button.save{background:#F6E5D4;color:#0E2A22}
+.editbar button:disabled{opacity:.5;cursor:default}
+html.editing body{padding-top:58px}
+html.editing .rail{top:58px;height:calc(100vh - 58px)}
+html.editing [data-edit]{outline:1.5px dashed color-mix(in srgb,currentColor 45%,transparent);outline-offset:3px;border-radius:2px;cursor:text;min-width:1ch}
+html.editing [data-edit]:hover{outline-color:currentColor}
+html.editing [data-edit]:focus{outline:2px solid var(--focus)}
+.only-edit{display:none!important}
+html.editing .only-edit{display:revert!important}
+html.editing .add.only-edit{display:flex!important}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:#0E2A22;color:#FFFDF9;padding:.7em 1.2em;border-radius:999px;font-size:.92rem;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;padding:10px 16px;border-right:0;border-bottom:1px solid var(--line);gap:16px;overflow-x:auto}
+  html.editing .rail{top:58px;height:auto}
+  .rail ul{flex-direction:row;gap:4px}
+  .rail a.nl{white-space:nowrap;margin-left:0}
+  .rail a.nl.is-here{box-shadow:inset 0 -3px 0 var(--accent)}
+  .rail-foot{display:none}
+  .hero-foot,.logo-grid,.pattern-tool,.spec{grid-template-columns:1fr}
+  .scale-row{grid-template-columns:1fr auto}
+  .scale-row .nm{grid-column:1/-1}
+}
+@media (max-width:640px){
+  .alt-grid,.files-edit{grid-template-columns:1fr}
+  .foot-band{grid-template-columns:1fr}
+  .mk-att{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="editbar" id="editbar" role="region" aria-label="Mode édition">
+  <div class="in">
+    <p id="editMsg">Mode édition : cliquez sur un texte pour le modifier, sur une image pour la remplacer.</p>
+    <div class="acts">
+      <button id="cancelBtn" type="button">Annuler les changements</button>
+      <button id="saveBtn" class="save" type="button">Enregistrer</button>
+      <button id="quitBtn" type="button">Quitter l'édition</button>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="rail" aria-label="Sections de la charte">
+    <a class="rail-brand" href="#top" id="railBrand"></a>
+    <ul>
+      <li><a class="nl" href="#logo">Logo</a></li>
+      <li><a class="nl" href="#signature">Signature</a></li>
+      <li><a class="nl" href="#declinaisons">Déclinaisons</a></li>
+      <li><a class="nl" href="#couleurs">Couleurs</a></li>
+      <li><a class="nl" href="#typo">Caractères</a></li>
+      <li><a class="nl" href="#symboles">Symboles</a></li>
+      <li><a class="nl" href="#elements">Motifs</a></li>
+      <li><a class="nl" href="#univers">Univers</a></li>
+      <li><a class="nl" href="#thematiques">Thématiques</a></li>
+    </ul>
+    <div class="rail-foot" id="railFoot"></div>
+  </nav>
+
+  <main>
+    <header class="hero intro-anim" id="top"></header>
+    <section class="sec" id="logo"></section>
+    <section class="sec tint" id="signature"></section>
+    <section class="sec" id="declinaisons"></section>
+    <section class="sec tint" id="couleurs"></section>
+    <section class="sec" id="typo"></section>
+    <section class="sec tint" id="symboles"></section>
+    <section class="sec" id="elements"></section>
+    <section class="sec tint" id="univers"></section>
+    <section class="sec" id="thematiques"></section>
+    <footer class="foot-band" id="pied"></footer>
+  </main>
+</div>
+
+<div class="edit-toggle" id="editToggle"><button type="button">Modifier la charte</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="filePick" accept="image/*,.svg" class="sr" tabindex="-1" aria-hidden="true">
+
+<script id="defaults" type="application/json">
+{
+ "meta": {
+  "nom": "Ami'coop",
+  "titre": "Charte de marque",
+  "intro": "Tout ce qu'il faut pour faire exister Ami'coop de façon juste et reconnaissable, du logo jusqu'aux supports. Passez de la formation au conseil : la page entière change de couleur.",
+  "choix": "Voir la marque côté",
+  "exempleMarque": "Par le domicile, pour le domicile",
+  "version": "Version de travail, septembre 2026",
+  "contact": "Questions, fichiers sources et validations : Bertrand Hubert, responsable communication d'Amicial.",
+  "signature": "Par le domicile, pour le domicile"
+ },
+ "titres": {
+  "logo": "Le logo",
+  "declinaisons": "Les déclinaisons",
+  "interdits": "Ce qu'on ne fait pas avec le logo",
+  "couleurs": "Les couleurs",
+  "contraste": "Quelles couleurs se lisent ensemble",
+  "typo": "Les caractères",
+  "echelle": "La hiérarchie des textes",
+  "elements": "Les motifs",
+  "motif": "Mode d'emploi",
+  "univers": "L'univers",
+  "thematiques": "Deux offres, deux couleurs",
+  "apercu": "Aperçu sur trois supports",
+  "symboles": "Les symboles",
+  "encadres": "Dans un support de formation",
+  "signature": "La signature",
+  "signatureUsages": "La signature en situation"
+ },
+ "ledes": {
+  "logo": "Le symbole assemble quatre A : Amicial, Accompagnement, Autonomie, Appui. Quatre bras tendus qui se rejoignent au centre, comme pour sceller un accord. Sous le nom, la signature : par le domicile, pour le domicile.",
+  "declinaisons": "Le logo de référence est en contour. Il existe aussi en version pleine, et le symbole comme le nom peuvent vivre seuls quand le format ou le support le demande.",
+  "couleurs": "Le vert forêt et le crème portent la marque, le noir encre écrit le nom. L'indigo, le ciel et le pêche viennent en ponctuation. Cliquez sur un code pour le copier.",
+  "contraste": "Chaque case pose un texte de la palette sur un fond de la palette, avec son ratio de contraste.",
+  "typo": "Bricolage Grotesque donne la voix : un dessin franc, un peu brut, qui assume son caractère. Hanken Grotesk fait le travail de lecture, des supports de formation aux mails.",
+  "elements": "Deux motifs tirés du symbole : l'un en contour, léger, l'autre en plein, plus affirmé. Réglez-les pour voir ce qu'ils donnent sur chaque fond.",
+  "univers": "Ce qu'Ami'coop montre, et comment : des personnes réelles, des lieux réels, de la lumière naturelle.",
+  "thematiques": "Le vert forêt signe la formation, l'indigo signe le conseil. À l'intérieur de chaque offre, les domaines se distinguent par leur nom et leur pictogramme, jamais par une nouvelle couleur : la marque reste lisible, quel que soit le support.",
+  "symboles": "L'apostrophe est la forme mère de l'identité. La mascotte, c'est l'apostrophe qui prend vie ; les pictogrammes Astuce et Info en reprennent le trait. Changez la couleur pour les voir dans toute la palette.",
+  "signature": "Elle dit en une phrase ce qu'Ami'coop défend : un organisme né du domicile, qui travaille pour le domicile. Elle accompagne le logo, ou vit seule sur le site, les réseaux et les supports. Choisissez une couleur et un fond, puis téléchargez-la prête à l'emploi."
+ },
+ "logo": {
+  "principal": null,
+  "negatif": null,
+  "regles": [
+   "Toujours sur un fond uni de la palette, ou sur une zone calme d'une photo.",
+   "Version colorée sur fond clair, version crème sur fond vert forêt ou indigo.",
+   "La version contour est la version de référence ; la version pleine sert quand le logo doit s'affirmer : petite taille, objet, signalétique."
+  ],
+  "zone": "Un espace libre égal à la hauteur d'un bras du symbole, tout autour du logo.",
+  "taille": "30 mm de large en impression, 140 px à l'écran pour garder la signature lisible. En dessous, utiliser le nom seul ou le symbole seul.",
+  "alternatifs": [
+   {
+    "img": null,
+    "nom": "Logo plein",
+    "usage": "Même composition, symbole en aplat. Quand le logo doit s'affirmer : petites tailles, tampons, objets, signalétique."
+   },
+   {
+    "img": null,
+    "nom": "Le nom seul",
+    "usage": "En-têtes de mail, bandeaux, pieds de page et petites tailles, quand la signature deviendrait illisible."
+   },
+   {
+    "img": null,
+    "nom": "Le symbole plein",
+    "usage": "Avatars de réseaux sociaux, favicon, tampons. Seulement quand le nom Ami'coop apparaît ailleurs sur le support."
+   },
+   {
+    "img": null,
+    "nom": "Le symbole contour",
+    "usage": "Élément graphique : coin de page, cadre photo, grand format en transparence. Jamais comme signature seule."
+   }
+  ],
+  "interdits": [
+   {
+    "type": "etire",
+    "texte": "Déformer ou étirer"
+   },
+   {
+    "type": "pivote",
+    "texte": "Faire pivoter"
+   },
+   {
+    "type": "ombre",
+    "texte": "Ajouter une ombre ou un effet"
+   },
+   {
+    "type": "couleur",
+    "texte": "Changer les couleurs"
+   },
+   {
+    "type": "fond",
+    "texte": "Poser sur un fond chargé"
+   }
+  ],
+  "compact": null,
+  "compactNegatif": null
+ },
+ "couleurs": [
+  {
+   "nom": "Vert forêt",
+   "hex": "#074C39",
+   "role": "Couleur d'identité et couleur de la formation : logo, titres, grands aplats.",
+   "part": "25",
+   "cmjn": ""
+  },
+  {
+   "nom": "Crème",
+   "hex": "#F6E5D4",
+   "role": "Fond principal des supports, la respiration de la marque.",
+   "part": "50",
+   "cmjn": ""
+  },
+  {
+   "nom": "Indigo",
+   "hex": "#4458A4",
+   "role": "Couleur du conseil : supports de mission, propositions, rapports.",
+   "part": "10",
+   "cmjn": ""
+  },
+  {
+   "nom": "Ciel",
+   "hex": "#A1C1D1",
+   "role": "Accent doux : fonds secondaires, graphiques.",
+   "part": "5",
+   "cmjn": ""
+  },
+  {
+   "nom": "Pêche",
+   "hex": "#F7BBB4",
+   "role": "Accent chaleureux. En texte, uniquement sur fond sombre.",
+   "part": "5",
+   "cmjn": ""
+  },
+  {
+   "nom": "Noir encre",
+   "hex": "#1D1D1B",
+   "role": "Couleur du nom dans le logo. Textes longs quand le vert serait trop présent.",
+   "part": "5",
+   "cmjn": ""
+  }
+ ],
+ "typos": [
+  {
+   "nom": "Bricolage Grotesque",
+   "role": "Titres, accroches, chiffres clés",
+   "graisses": "Semi-gras 600, gras 700, extra-gras 800",
+   "exemple": "On connaît la maison.",
+   "poids": 700
+  },
+  {
+   "nom": "Hanken Grotesk",
+   "role": "Textes courants, supports de formation, mails",
+   "graisses": "Normal 400, medium 500, semi-gras 600",
+   "exemple": "Des formations construites avec les professionnels de l'aide et du soin à domicile, pour les équipes qui interviennent chaque jour chez les personnes accompagnées.",
+   "poids": 400
+  }
+ ],
+ "echelle": [
+  {
+   "nom": "Titre principal",
+   "taille": "40 pt",
+   "police": 0,
+   "graisse": "800"
+  },
+  {
+   "nom": "Sous-titre",
+   "taille": "22 pt",
+   "police": 0,
+   "graisse": "600"
+  },
+  {
+   "nom": "Intertitre",
+   "taille": "14 pt",
+   "police": 1,
+   "graisse": "600"
+  },
+  {
+   "nom": "Texte courant",
+   "taille": "11 pt",
+   "police": 1,
+   "graisse": "400"
+  },
+  {
+   "nom": "Légende",
+   "taille": "8 pt",
+   "police": 1,
+   "graisse": "500"
+  }
+ ],
+ "assets": {
+  "motif": {
+   "img": null,
+   "texte": "En fond de couverture, en bandeau ou en coin de support, jamais sous un texte long. Le contour reste discret ; le plein s'utilise en petite surface."
+  },
+  "motifs": [
+   {
+    "nom": "Contour",
+    "img": null
+   },
+   {
+    "nom": "Plein",
+    "img": null
+   }
+  ],
+  "elements": []
+ },
+ "moodboard": [
+  {
+   "img": null,
+   "legende": "Des portraits à hauteur d'yeux, dans le cadre de travail",
+   "tag": "Personnes"
+  },
+  {
+   "img": null,
+   "legende": "Des lieux réels : un salon, une cuisine, une salle de formation",
+   "tag": "Lieux"
+  },
+  {
+   "img": null,
+   "legende": "La lumière du jour, jamais de flash",
+   "tag": "Lumière"
+  },
+  {
+   "img": null,
+   "legende": "Des gestes en cours plutôt que des poses",
+   "tag": "Personnes"
+  },
+  {
+   "img": null,
+   "legende": "Papier, bois, tissu : des matières qu'on peut toucher",
+   "tag": "Matières"
+  },
+  {
+   "img": null,
+   "legende": "Du vide autour des sujets, des cadrages larges",
+   "tag": "Lumière"
+  },
+  {
+   "img": null,
+   "legende": "Pas de mains jointes, de cœurs ni de maisons stylisées",
+   "tag": "À éviter"
+  }
+ ],
+ "themes": [
+  {
+   "nom": "Formation",
+   "couleur": "#074C39",
+   "description": "Formation professionnelle pour le domicile et par le domicile, conçue avec celles et ceux qui font le métier.",
+   "exemple": "Accompagner la personne dans son quotidien",
+   "domaines": [
+    "Métiers de l'aide et du soin",
+    "Encadrement de proximité",
+    "Prévention des risques"
+   ],
+   "supports": {
+    "couverture": "Support de formation",
+    "document": "Attestation de formation",
+    "phrase": "Prénom Nom a suivi la formation",
+    "pied": "Livret stagiaire"
+   }
+  },
+  {
+   "nom": "Conseil",
+   "couleur": "#4458A4",
+   "description": "Accompagnement des structures associatives d'aide et de soins à domicile.",
+   "exemple": "Structurer la démarche qualité de votre service",
+   "domaines": [
+    "Stratégie",
+    "Communication",
+    "Systèmes d'information",
+    "Qualité"
+   ],
+   "supports": {
+    "couverture": "Rapport de mission",
+    "document": "Proposition d'accompagnement",
+    "phrase": "Pour l'association Nom de la structure",
+    "pied": "Document confidentiel"
+   }
+  }
+ ],
+ "symboles": {
+  "items": [
+   {
+    "img": null,
+    "nom": "L'apostrophe",
+    "usage": "Forme mère. Puce, bulle de citation, découpe d'une photo, repère dans une mise en page."
+   },
+   {
+    "img": null,
+    "nom": "La mascotte",
+    "usage": "L'apostrophe qui prend vie. Supports pédagogiques, accueil des stagiaires, réseaux sociaux. Pas sur les documents institutionnels ni contractuels."
+   },
+   {
+    "img": null,
+    "nom": "Astuce",
+    "usage": "Signale un conseil pratique ou un geste professionnel dans un support de formation."
+   },
+   {
+    "img": null,
+    "nom": "Info",
+    "usage": "Signale une information à retenir, un repère réglementaire ou une définition."
+   }
+  ],
+  "encadres": [
+   {
+    "icone": 2,
+    "titre": "Astuce",
+    "texte": "En arrivant, présentez-vous toujours par votre prénom, même quand la personne vous connaît bien."
+   },
+   {
+    "icone": 3,
+    "titre": "À retenir",
+    "texte": "Toute évolution des interventions se décide avec la personne accompagnée, et se note dans son dossier."
+   }
+  ]
+ },
+ "signature": {
+  "texte": "Par le domicile, pour le domicile",
+  "img": null,
+  "police": "Police manuscrite, à préciser",
+  "regles": [
+   "Toujours sur une seule ligne, avec sa virgule.",
+   "Seule, elle sert d'accroche ou de conclusion, jamais de texte courant.",
+   "Avec le logo, elle garde sa place sous le nom : on ne la déplace pas et on ne la recompose pas dans une autre police.",
+   "Dans un texte, on l'écrit en toutes lettres, sans guillemets ni italique."
+  ]
+ }
+}
+</script>
+<script id="seed" type="application/json">{}</script>
+
+<script>
+(function(){
+"use strict";
+/* ---------- État ---------- */
+const DEFAULT = JSON.parse(document.getElementById('defaults').textContent);
+let SEED = {};
+try { SEED = JSON.parse(document.getElementById('seed').textContent || '{}'); } catch(e) {}
+const clone = o => JSON.parse(JSON.stringify(o));
+function fill(t, d){ for (const k in d){ if (t[k] === undefined) t[k] = clone(d[k]); else if (d[k] && typeof d[k]==='object' && !Array.isArray(d[k]) && t[k] && typeof t[k]==='object') fill(t[k], d[k]); } return t; }
+
+let C = fill(SEED.contenu ? clone(SEED.contenu) : clone(DEFAULT), DEFAULT);
+const ASSETS = SEED.assets || {};
+let LAST = clone(C);
+let DOMAIN = -1;
+let EDIT = false, DIRTY = false, ACTIVE = -1, STAGE = 'clair', ZONE = false, TESTER = '', WEIGHT = null, MOODF = 'Tout';
+let PAT = {fg: 0, bg: 1, size: 200, m: 0};
+let SYM = {fg: 0, bg: -2};
+let SIG = {fg: 0, bg: -2, r: 11.7};
+let DOC = null, ASSETCAP = null, DL = null, CAN_EDIT = false, MAJ = SEED.maj || null, FIRST = true;
+
+/* ---------- Utilitaires ---------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const getP = p => p.split('.').reduce((o,k) => o == null ? o : o[k], C);
+function setP(p, v){ const ks = p.split('.'); let o = C; for (let i=0;i<ks.length-1;i++) o = o[ks[i]]; o[ks[ks.length-1]] = v; }
+const src = id => ASSETS[id] || ('/_blob/' + id);
+function rgb(h){ h = String(h).replace('#',''); if (h.length===3) h = h.split('').map(c=>c+c).join(''); const n = parseInt(h,16) || 0; return [n>>16&255, n>>8&255, n&255]; }
+function lum(h){ return rgb(h).map(v => { v/=255; return v <= .03928 ? v/12.92 : Math.pow((v+.055)/1.055, 2.4); }).reduce((a,v,i) => a + v*[.2126,.7152,.0722][i], 0); }
+function ratio(a,b){ const x = lum(a), y = lum(b); return (Math.max(x,y)+.05)/(Math.min(x,y)+.05); }
+const INK = '#0E2A22', LIGHT = '#FFFDF9';
+const inkFor = h => ratio(h, INK) >= ratio(h, LIGHT) ? INK : LIGHT;
+function cmyk(h){ const [r,g,b] = rgb(h).map(v=>v/255); const k = 1-Math.max(r,g,b); if (k >= 1) return '0 0 0 100'; return [r,g,b].map(v => Math.round((1-v-k)/(1-k)*100)).concat(Math.round(k*100)).join(' '); }
+const fr = n => n.toFixed(1).replace('.', ',');
+const validHex = h => /^#?[0-9a-f]{6}$/i.test(h);
+const normHex = h => ('#' + h.replace('#','')).toUpperCase();
+const TILE_FALLBACK = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path d="M20 0A20 20 0 0 1 0 20V0z"/><path d="M20 40a20 20 0 0 1 20-20v20z"/></svg>');
+
+function T(path, tag, cls, ml){
+  tag = tag || 'span';
+  const ed = EDIT ? ` contenteditable="true" spellcheck="true" data-edit="${path}"${ml ? ' data-ml="1"' : ''}` : '';
+  return `<${tag} class="${cls||''}" data-bind="${path}"${ed}>${esc(getP(path))}</${tag}>`;
+}
+const addBtn = (list, label) => `<button type="button" class="add only-edit" data-add="${list}">${esc(label)}</button>`;
+const delBtn = (path, label) => EDIT ? `<button type="button" class="del" data-del="${path}">${esc(label || 'Supprimer')}</button>` : '';
+function slot(path, cls, ph){
+  const id = getP(path);
+  let h = `<div class="slot ${cls||''}">`;
+  h += id ? `<img src="${esc(src(id))}" alt="">` : `<div class="ph">${esc(ph || 'Visuel à venir')}</div>`;
+  if (EDIT && ASSETCAP) h += `<div class="slot-tools"><button type="button" data-upload="${path}">${id ? 'Remplacer' : 'Ajouter une image'}</button>${id ? `<button type="button" data-clear="${path}">Retirer</button>` : ''}</div>`;
+  return h + '</div>';
+}
+function wordmark(){
+  const n = String(C.meta.nom || '').toLowerCase();
+  const i = n.search(/['’]/);
+  return i < 0 ? `<span class="wordmark">${esc(n)}</span>` : `<span class="wordmark">${esc(n.slice(0,i))}<span class="apos">’</span>${esc(n.slice(i+1))}</span>`;
+}
+function logoMark(dark, compact){
+  const L = C.logo;
+  let id = compact ? (dark ? (L.compactNegatif || L.compact) : (L.compact || L.compactNegatif)) : null;
+  if (!id) id = dark ? (L.negatif || L.principal) : (L.principal || L.negatif);
+  return id ? `<img src="${esc(src(id))}" alt="Logo ${esc(C.meta.nom)}">` : wordmark();
+}
+function accent(){ return ACTIVE < 0 ? ((C.couleurs[0] && C.couleurs[0].hex) || '#074C39') : C.themes[ACTIVE].couleur; }
+function tile(){ const ms = C.assets.motifs || []; if (PAT.m >= ms.length) PAT.m = 0; const m = ms[PAT.m]; const id = (m && m.img) || C.assets.motif.img; return id ? src(id) : TILE_FALLBACK; }
+function hasTile(){ const m = (C.assets.motifs || [])[PAT.m]; return !!((m && m.img) || C.assets.motif.img); }
+function maskStyle(size){ const u = tile(); return `-webkit-mask-image:url('${u}');mask-image:url('${u}');-webkit-mask-size:${size}px;mask-size:${size}px;`; }
+function toast(msg){ const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove('show'), 2400); }
+function markDirty(){ DIRTY = true; const s = $('#saveBtn'); if (s) s.disabled = false; $('#editMsg').textContent = 'Modifications non enregistrées. Elles ne seront visibles par les autres qu’après « Enregistrer ».'; }
+
+/* ---------- Polices ---------- */
+const loadedFonts = ['Bricolage Grotesque','Hanken Grotesk'];
+function loadFonts(){
+  C.typos.forEach((t,i) => {
+    if (!t.nom || loadedFonts[i] === t.nom) return;
+    loadedFonts[i] = t.nom;
+    const fam = encodeURIComponent(t.nom).replace(/%20/g,'+');
+    let link = document.getElementById('font-'+i);
+    if (!link){ link = document.createElement('link'); link.rel = 'stylesheet'; link.id = 'font-'+i; document.head.appendChild(link); }
+    link.onerror = () => { link.onerror = null; link.href = `https://fonts.googleapis.com/css2?family=${fam}&display=swap`; };
+    link.href = `https://fonts.googleapis.com/css2?family=${fam}:wght@300..800&display=swap`;
+  });
+  const st = document.documentElement.style;
+  if (C.typos[0]) st.setProperty('--f-titre', `'${C.typos[0].nom}', 'Arial Narrow', system-ui, sans-serif`);
+  if (C.typos[1]) st.setProperty('--f-texte', `'${C.typos[1].nom}', system-ui, -apple-system, 'Segoe UI', sans-serif`);
+}
+
+/* ---------- Rendus ---------- */
+function applyAccent(){
+  if (ACTIVE >= C.themes.length) ACTIVE = -1;
+  if (ACTIVE < 0 && brandTheme() >= 0) ACTIVE = brandTheme();
+  const a = accent();
+  const st = document.documentElement.style;
+  st.setProperty('--accent', a);
+  st.setProperty('--accent-ink', inkFor(a));
+}
+function brandTheme(){ const b = ((C.couleurs[0] && C.couleurs[0].hex) || '').toUpperCase(); return C.themes.findIndex(t => String(t.couleur).toUpperCase() === b); }
+function chipsHTML(onPaper){
+  const brand = (C.couleurs[0] && C.couleurs[0].hex) || '#074C39';
+  let h = `<div class="chips${onPaper ? ' on-paper' : ''}" role="group" aria-label="${esc(C.meta.choix)}">`;
+  if (brandTheme() < 0) h += `<button type="button" class="chip${ACTIVE<0?' is-on':''}" data-theme="-1" aria-pressed="${ACTIVE<0}"><i style="background:${brand}"></i>${esc(C.meta.nom)}</button>`;
+  C.themes.forEach((t,i) => { h += `<button type="button" class="chip${ACTIVE===i?' is-on':''}" data-theme="${i}" aria-pressed="${ACTIVE===i}"><i style="background:${esc(t.couleur)}"></i>${esc(t.nom)}</button>`; });
+  return h + '</div>';
+}
+function renderHero(){
+  const dark = inkFor(accent()) === LIGHT;
+  $('#top').innerHTML = `
+    <div class="hero-mark">${logoMark(dark)}</div>
+    <div class="hero-foot">
+      <div>${T('meta.titre','h1')}${T('meta.intro','p','',1)}</div>
+      <div>${T('meta.choix','p','chips-label')}${chipsHTML(false)}</div>
+    </div>`;
+  if (!FIRST) $('#top').classList.remove('intro-anim');
+  const rb = $('#railBrand');
+  const rid = C.logo.compact || C.logo.principal;
+  rb.innerHTML = rid ? `<img src="${esc(src(rid))}" alt="${esc(C.meta.nom)}">` : `<span class="dot"></span>${esc(C.meta.nom)}`;
+  $('#railFoot').innerHTML = esc(C.meta.version);
+}
+function renderLogo(){
+  const L = C.logo;
+  const dark = STAGE === 'vert' || (STAGE === 'theme' && inkFor(accent()) === LIGHT);
+  const stages = [['clair','Fond clair'],['vert','Fond vert forêt'],['theme','Fond thématique']];
+  let dlBtns = '';
+  if (DL){
+    if (L.principal) dlBtns += `<button type="button" class="btn" data-dl="logo.principal" data-name="${esc(C.meta.nom)}-logo">Télécharger le logo</button>`;
+    if (L.negatif) dlBtns += `<button type="button" class="btn" data-dl="logo.negatif" data-name="${esc(C.meta.nom)}-logo-negatif">Version sur fond sombre</button>`;
+  }
+  const bads = L.interdits.map((b,i) => `<figure class="bad" style="margin:0"><div class="mini t-${esc(b.type)}"><div>${logoMark(false)}</div></div>${T('logo.interdits.'+i+'.texte','p')}</figure>`).join('');
+  $('#logo').innerHTML = `
+    <div class="sec-head">${T('titres.logo','h2')}${T('ledes.logo','p','lede',1)}</div>
+    <div class="logo-grid">
+      <div>
+        <div class="stage bg-${STAGE}${ZONE?' zone-on':''}"><div class="logo-box">${logoMark(dark)}</div></div>
+        <div class="toolbar">
+          <div class="seg" role="group" aria-label="Fond de présentation">${stages.map(([k,l]) => `<button type="button" data-stage="${k}" class="${STAGE===k?'is-on':''}" aria-pressed="${STAGE===k}">${l}</button>`).join('')}</div>
+          <label class="check"><input type="checkbox" id="zoneChk" ${ZONE?'checked':''}> Zone de protection</label>
+        </div>
+        ${dlBtns ? `<div class="toolbar">${dlBtns}</div>` : ''}
+        ${EDIT ? `<div class="files-edit">
+            <figure style="margin:0">${slot('logo.principal','', 'Logo principal (SVG ou PNG transparent)')}<figcaption>Logo principal, pour fonds clairs</figcaption></figure>
+            <figure style="margin:0;">${slot('logo.negatif','on-dark', 'Version négative (crème ou blanche)')}<figcaption>Version pour fonds sombres</figcaption></figure>
+            <figure style="margin:0">${slot('logo.compact','', 'Version compacte')}<figcaption>Version compacte, pour les petits formats</figcaption></figure>
+            <figure style="margin:0;">${slot('logo.compactNegatif','on-dark', 'Version compacte négative')}<figcaption>Version compacte, fonds sombres</figcaption></figure>
+          </div>` : ''}
+      </div>
+      <div class="rules">
+        <div class="rule"><h3>Règles de base</h3><ul>${L.regles.map((r,i) => `<li>${T('logo.regles.'+i,'span','',1)} ${delBtn('logo.regles.'+i,'Retirer')}</li>`).join('')}</ul>${EDIT?`<div style="margin-top:10px">${addBtn('logo.regles','Ajouter une règle')}</div>`:''}</div>
+        <div class="rule"><h3>Zone de protection</h3>${T('logo.zone','p','',1)}</div>
+        <div class="rule"><h3>Taille minimale</h3>${T('logo.taille','p','',1)}</div>
+      </div>
+    </div>
+    ${T('titres.interdits','h3','sub')}
+    <div class="bad-grid">${bads}</div>`;
+}
+function renderSignature(){
+  const G = C.signature, cs = C.couleurs;
+  const colOf = i => i === -1 ? accent() : i === -2 ? '#FFFDF9' : (cs[i] ? cs[i].hex : '#074C39');
+  if (SIG.fg >= cs.length) SIG.fg = 0;
+  if (SIG.bg >= cs.length) SIG.bg = -2;
+  const fg = colOf(SIG.fg), bg = colOf(SIG.bg), r = ratio(fg, bg);
+  const opts = [[-2,'Blanc','#FFFDF9']].concat(cs.map((c,i) => [i,c.nom,c.hex])).concat([[-1,'Couleur de la thématique affichée',accent()]]);
+  const dots = (kind, list) => list.map(([i,n,h]) => `<button type="button" data-g${kind}="${i}" class="${SIG[kind]===i?'is-on':''}" style="background:${esc(h)}${i===-1?';background-image:conic-gradient('+C.themes.map(t=>t.couleur).join(',')+')':''}" aria-label="${esc(n)}" aria-pressed="${SIG[kind]===i}" title="${esc(n)}"></button>`).join('');
+  const m = G.img ? `url('${src(G.img)}')` : 'none';
+  const art = G.img ? `<div class="sig-art" style="--m:${m};--c:${esc(fg)};--r:${SIG.r}" role="img" aria-label="${esc(G.texte)}"></div>` : `<div class="sig-text" style="color:${esc(fg)}">${esc(G.texte)}</div>`;
+  const compact = C.logo.compactNegatif || C.logo.compact;
+  const darkBar = inkFor(accent()) === LIGHT;
+  const barLogo = (darkBar ? (C.logo.compactNegatif || C.logo.compact) : (C.logo.compact || C.logo.compactNegatif));
+  $('#signature').innerHTML = `
+    <div class="sec-head">${T('titres.signature','h2')}${T('ledes.signature','p','lede',1)}</div>
+    <div class="sig-grid">
+      <div>
+        <div class="sig-stage" style="background:${esc(bg)}">${art}</div>
+        ${EDIT ? `<div class="files-edit" style="grid-template-columns:1fr"><figure style="margin:0">${slot('signature.img','', 'Signature seule (SVG)')}<figcaption>Fichier de la signature, en une couleur</figcaption></figure></div>` : ''}
+        <div class="sig-tools">
+          <span class="lbl">Couleur</span><div class="dots">${dots('fg', opts.filter(o => o[0] !== -2))}</div>
+          <span class="lbl">Fond</span><div class="dots">${dots('bg', opts)}</div>
+        </div>
+        <p class="sig-note">Contraste ${fr(r)}${r < 3 ? ' : trop faible, choisissez un autre fond' : r < 4.5 ? ' : correct en grand format' : ''}</p>
+        <div class="toolbar">
+          <button type="button" class="btn" data-copy="${esc(G.texte)}">Copier le texte</button>
+          ${DL && G.img ? `<button type="button" class="btn solid" data-sigdl="svg">Télécharger en SVG</button><button type="button" class="btn" data-sigdl="png">Télécharger en PNG</button>` : ''}
+        </div>
+      </div>
+      <div class="rules">
+        <div class="rule"><h3>Le texte</h3>${T('signature.texte','p')}</div>
+        <div class="rule"><h3>Règles</h3><ul>${G.regles.map((x,i) => `<li>${T('signature.regles.'+i,'span','',1)} ${delBtn('signature.regles.'+i,'Retirer')}</li>`).join('')}</ul>${EDIT?`<div style="margin-top:10px">${addBtn('signature.regles','Ajouter une règle')}</div>`:''}</div>
+        <div class="rule"><h3>Caractère</h3>${T('signature.police','p')}</div>
+      </div>
+    </div>
+    ${T('titres.signatureUsages','h3','sub')}
+    <div class="sig-uses">
+      <figure class="use" style="margin:0">
+        <div class="use-site">
+          <div class="bar">${barLogo ? `<img src="${esc(src(barLogo))}" alt="">` : wordmark()}${G.img ? `<div class="s" style="--m:${m}"></div>` : `<span>${esc(G.texte)}</span>`}</div>
+          <div class="body"><b>${esc(ACTIVE < 0 ? 'Des formations construites avec le terrain' : C.themes[ACTIVE].exemple)}</b><span style="width:92%"></span><span style="width:78%"></span><span style="width:84%"></span></div>
+        </div>
+        <figcaption>En-tête du site, aux couleurs de la thématique affichée</figcaption>
+      </figure>
+      <figure class="use" style="margin:0">
+        <div class="use-mail">
+          <div class="who">Prénom Nom</div><div>Chargée de formation</div><div style="color:#4D635C">06 00 00 00 00</div>
+          <div class="row">${C.logo.compact ? `<img src="${esc(src(C.logo.compact))}" alt="">` : wordmark()}${G.img ? `<div class="s" style="--m:${m}"></div>` : `<span>${esc(G.texte)}</span>`}</div>
+        </div>
+        <figcaption>Signature de mail</figcaption>
+      </figure>
+    </div>`;
+  if (G.img && !renderSignature._r){
+    renderSignature._r = 1;
+    const im = new Image(); im.onload = () => { if (im.naturalHeight) { SIG.r = +(im.naturalWidth / im.naturalHeight).toFixed(2); const a = $('.sig-art'); if (a) a.style.setProperty('--r', SIG.r); } }; im.src = src(G.img);
+  }
+}
+async function sigDownload(kind){
+  const G = C.signature; if (!DL || !G.img) return;
+  const cs = C.couleurs;
+  const fg = SIG.fg === -1 ? accent() : (cs[SIG.fg] ? cs[SIG.fg].hex : '#074C39');
+  const nomC = SIG.fg === -1 ? (ACTIVE < 0 ? 'marque' : C.themes[ACTIVE].nom) : (cs[SIG.fg] ? cs[SIG.fg].nom : 'vert');
+  const base = ('signature-amicoop-' + nomC).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+  try {
+    let txt = await (await fetch(src(G.img))).text();
+    txt = txt.replace(/fill="#[0-9a-fA-F]{3,6}"/g, `fill="${fg}"`).replace(/fill:\s*#[0-9a-fA-F]{3,6}/g, `fill:${fg}`);
+    if (kind === 'svg') { await DL.save({filename: base + '.svg', data: new Blob([txt], {type:'image/svg+xml'})}); return; }
+    const url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(txt);
+    const im = new Image(); await new Promise((ok, ko) => { im.onload = ok; im.onerror = ko; im.src = url; });
+    const W = 2400, H = Math.round(W * (im.naturalHeight / im.naturalWidth || 1/SIG.r));
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    cv.getContext('2d').drawImage(im, 0, 0, W, H);
+    const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+    await DL.save({filename: base + '.png', data: blob});
+  } catch(err){ if (!err || err.code !== 'declined') toast('Le téléchargement n’a pas abouti.'); }
+}
+function renderAlts(){
+  const alts = C.logo.alternatifs.map((a,i) => `
+    <article class="alt">
+      ${slot('logo.alternatifs.'+i+'.img','', 'Fichier à ajouter')}
+      ${T('logo.alternatifs.'+i+'.nom','h3')}
+      ${T('logo.alternatifs.'+i+'.usage','p','',1)}
+    </article>`).join('');
+  $('#declinaisons').innerHTML = `<div class="sec-head">${T('titres.declinaisons','h2')}${T('ledes.declinaisons','p','lede',1)}</div><div class="alt-grid">${alts}</div>`;
+}
+function renderCouleurs(){
+  const cs = C.couleurs;
+  const tot = cs.reduce((a,c) => a + (parseFloat(c.part) || 0), 0) || 1;
+  const bar = cs.map(c => { const p = parseFloat(c.part) || 0; return p > 0 ? `<span style="flex:${p} 1 0;background:${esc(c.hex)};color:${inkFor(c.hex)}">${Math.round(p/tot*100)} %</span>` : ''; }).join('');
+  const sw = cs.map((c,i) => {
+    const r = rgb(c.hex).join(' ');
+    const cm = c.cmjn || cmyk(c.hex);
+    const approx = !c.cmjn;
+    return `<article class="sw">
+      <div class="sw-color" style="background:${esc(c.hex)};color:${inkFor(c.hex)}">
+        ${T('couleurs.'+i+'.nom','h3')}
+        <span class="part">${EDIT ? `Part d’usage : ${T('couleurs.'+i+'.part')} %` : (parseFloat(c.part)||0) + ' % des surfaces'}</span>
+      </div>
+      <div class="sw-body">
+        ${T('couleurs.'+i+'.role','p','sw-role',1)}
+        ${EDIT ? `<div class="hexedit"><input type="color" value="${esc(c.hex)}" data-hex="couleurs.${i}.hex" aria-label="Couleur ${esc(c.nom)}"><input type="text" value="${esc(c.hex)}" data-hext="couleurs.${i}.hex" aria-label="Code hexadécimal"></div>` : ''}
+        <dl class="codes">
+          <dt>HEX</dt><dd><button type="button" class="copy" data-copy="${esc(c.hex.toUpperCase())}">${esc(c.hex.toUpperCase())}</button></dd>
+          <dt>RVB</dt><dd><button type="button" class="copy" data-copy="${r}">${r}</button></dd>
+          <dt>CMJN</dt><dd>${EDIT ? `<span data-edit="couleurs.${i}.cmjn" data-bind="couleurs.${i}.cmjn" contenteditable="true">${esc(cm)}</span>` : `<button type="button" class="copy" data-copy="${esc(cm)}" title="${approx ? 'Valeur approchée, à confirmer avec l’imprimeur' : ''}">${approx ? '≈ ' : ''}${esc(cm)}</button>`}</dd>
+        </dl>
+        ${EDIT ? `<div>${delBtn('couleurs.'+i,'Supprimer la couleur')}</div>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+  const all = cs.concat([{nom:'Blanc', hex:'#FFFFFF'}]);
+  let m = `<table class="matrix"><caption class="sr">Contrastes entre les couleurs de la palette</caption><thead><tr><th scope="col">Fond ↓ / Texte →</th>${all.map(c => `<th scope="col">${esc(c.nom)}</th>`).join('')}</tr></thead><tbody>`;
+  all.forEach(bg => {
+    m += `<tr><th scope="row">${esc(bg.nom)}</th>`;
+    all.forEach(fg => {
+      if (bg.hex.toUpperCase() === fg.hex.toUpperCase()){ m += `<td><div class="cell same" style="background:${esc(bg.hex)}"></div></td>`; return; }
+      const r = ratio(bg.hex, fg.hex);
+      const k = r >= 4.5 ? 'ok' : r >= 3 ? 'mid' : 'ko';
+      const lab = r >= 4.5 ? 'tout texte' : r >= 3 ? 'titres' : 'à éviter';
+      m += `<td><div class="cell ${k}" style="background:${esc(bg.hex)};color:${esc(fg.hex)}" title="${esc(fg.nom)} sur ${esc(bg.nom)} : ${fr(r)}"><b>Aa</b><small>${fr(r)} : ${lab}</small></div></td>`;
+    });
+    m += '</tr>';
+  });
+  m += '</tbody></table>';
+  $('#couleurs').innerHTML = `
+    <div class="sec-head">${T('titres.couleurs','h2')}${T('ledes.couleurs','p','lede',1)}</div>
+    <div class="ratio-bar" aria-label="Proportions d'usage">${bar}</div>
+    <p class="ratio-note">Proportions d’usage sur un support type : la place que chaque couleur occupe.</p>
+    <div class="swatches">${sw}${addBtn('couleurs','Ajouter une couleur')}</div>
+    ${T('titres.contraste','h3','sub')}
+    ${T('ledes.contraste','p','lede',1)}
+    <div style="height:18px"></div>
+    <div class="matrix-wrap" tabindex="0">${m}</div>
+    <div class="legend"><span class="l1">4,5 et plus : tous les textes</span><span class="l2">de 3 à 4,5 : grands titres seulement</span><span class="l3">moins de 3 : à éviter</span></div>`;
+}
+function renderTypo(){
+  const t0 = C.typos[0], t1 = C.typos[1];
+  const w0 = WEIGHT || t0.poids || 700;
+  const specs = C.typos.map((t,i) => `
+    <article class="spec spec-${i}">
+      <div>
+        <div class="spec-sample" data-sample="${i}" style="font-family:'${esc(t.nom)}', var(--f-texte);font-weight:${i===0 ? w0 : (t.poids||400)}">${esc(TESTER || t.exemple)}</div>
+        <div class="glyphs" style="font-family:'${esc(t.nom)}', var(--f-texte);font-weight:${i===0?600:400}">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>àâçéèêëîïôùûü ’ « » ! ? & 0123456789 € %</div>
+      </div>
+      <div class="spec-meta">
+        ${T('typos.'+i+'.nom','h3')}
+        ${T('typos.'+i+'.role','p')}
+        ${T('typos.'+i+'.graisses','p')}
+        ${EDIT ? `<p>Phrase d’exemple : ${T('typos.'+i+'.exemple','span','',1)}</p>` : ''}
+      </div>
+    </article>`).join('');
+  const scale = C.echelle.map((s,i) => {
+    const pt = parseFloat(s.taille) || 12;
+    const px = Math.min(56, Math.max(12, pt * 1.25));
+    const f = C.typos[s.police] || t1;
+    return `<div class="scale-row">
+      <span class="nm">${T('echelle.'+i+'.nom')}${EDIT ? ` <button type="button" class="del" data-police="${i}">Police : ${s.police===0?'titre':'texte'}</button> ${delBtn('echelle.'+i,'Retirer')}` : ''}</span>
+      <span class="demo" style="font-family:'${esc(f.nom)}', var(--f-texte);font-size:${px}px;font-weight:${esc(s.graisse)}">${esc(s.nom)} en ${esc(f.nom)}</span>
+      <span class="sz">${T('echelle.'+i+'.taille')}, ${EDIT ? 'graisse ' + T('echelle.'+i+'.graisse') : esc(s.graisse)}</span>
+    </div>`;
+  }).join('');
+  $('#typo').innerHTML = `
+    <div class="sec-head">${T('titres.typo','h2')}${T('ledes.typo','p','lede',1)}</div>
+    <div class="tester">
+      <label for="testerIn">Essayez votre texte</label>
+      <input type="text" id="testerIn" value="${esc(TESTER)}" placeholder="${esc(t0.exemple)}">
+      <label for="weightIn" style="font-weight:400;color:var(--muted)">Graisse du titre</label>
+      <input type="range" id="weightIn" min="300" max="800" step="100" value="${w0}">
+    </div>
+    <div class="specs">${specs}</div>
+    ${T('titres.echelle','h3','sub')}
+    <div class="scale">${scale}</div>
+    ${EDIT ? `<div style="margin-top:14px">${addBtn('echelle','Ajouter un niveau de texte')}</div>` : ''}`;
+}
+function renderElements(){
+  const cs = C.couleurs;
+  if (PAT.fg >= cs.length) PAT.fg = 0;
+  if (PAT.bg >= cs.length) PAT.bg = Math.min(1, cs.length-1);
+  const fg = cs[PAT.fg] ? cs[PAT.fg].hex : '#074C39', bg = cs[PAT.bg] ? cs[PAT.bg].hex : '#F6E5D4';
+  const dots = kind => cs.map((c,i) => `<button type="button" data-p${kind}="${i}" class="${PAT[kind]===i?'is-on':''}" style="background:${esc(c.hex)}" aria-label="${esc(c.nom)}" aria-pressed="${PAT[kind]===i}"></button>`).join('');
+  const els = C.assets.elements.map((e,i) => `
+    <article class="el">
+      ${slot('assets.elements.'+i+'.img','', 'Visuel à venir')}
+      ${T('assets.elements.'+i+'.nom','h3')}
+      ${T('assets.elements.'+i+'.usage','p','',1)}
+      ${EDIT ? `<div style="margin-top:8px">${delBtn('assets.elements.'+i,'Supprimer')}</div>` : ''}
+    </article>`).join('');
+  $('#elements').innerHTML = `
+    <div class="sec-head">${T('titres.elements','h2')}${T('ledes.elements','p','lede',1)}</div>
+    <div class="pattern-tool">
+      <div class="pattern-view" id="patView" style="background-color:${esc(bg)}">
+        <div class="pattern-layer" id="patLayer" style="background-color:${esc(fg)};${maskStyle(PAT.size)}"></div>
+        ${hasTile() ? '' : '<span class="provisoire">Motif provisoire, à remplacer par le vôtre</span>'}
+      </div>
+      <div>
+        ${T('titres.motif','h3','','')}
+        ${T('assets.motif.texte','p','lede',1)}
+        <div style="height:22px"></div>
+        ${(C.assets.motifs||[]).length > 1 ? `<div class="ctl"><h3>Motif</h3><div class="seg" role="group" aria-label="Choix du motif">${C.assets.motifs.map((m,i) => `<button type="button" data-pm="${i}" class="${PAT.m===i?'is-on':''}" aria-pressed="${PAT.m===i}">${esc(m.nom)}</button>`).join('')}</div></div>` : ''}
+        <div class="ctl"><h3>Couleur du motif</h3><div class="dots">${dots('fg')}</div></div>
+        <div class="ctl"><h3>Couleur du fond</h3><div class="dots">${dots('bg')}</div></div>
+        <div class="ctl"><h3><label for="patSize">Échelle</label></h3><input type="range" id="patSize" min="40" max="400" value="${PAT.size}"></div>
+        ${EDIT ? `<div class="ctl"><h3>Fichier du motif affiché</h3>${slot('assets.motifs.'+PAT.m+'.img','', 'SVG ou PNG transparent, une tuile qui se répète')}<p style="font-size:.85rem;color:var(--muted);margin:6px 0 0">Nom : ${T('assets.motifs.'+PAT.m+'.nom')}</p></div>` : ''}
+      </div>
+    </div>
+    ${els || EDIT ? `<div style="height:clamp(40px,6vw,64px)"></div><div class="el-grid">${els}${addBtn('assets.elements','Ajouter un élément')}</div>` : ''}`;
+  const t = $('#elements h3'); if (t) { t.style.fontSize = '1.5rem'; t.style.marginBottom = '10px'; }
+}
+function renderSymboles(){
+  const S = C.symboles, cs = C.couleurs;
+  const colOf = i => i === -1 ? accent() : i === -2 ? '#FFFDF9' : (cs[i] ? cs[i].hex : '#074C39');
+  if (SYM.fg >= cs.length) SYM.fg = 0;
+  if (SYM.bg >= cs.length) SYM.bg = -2;
+  let fg = colOf(SYM.fg), bg = colOf(SYM.bg);
+  const opts = [[-2,'Blanc','#FFFDF9']].concat(cs.map((c,i) => [i,c.nom,c.hex])).concat([[-1,'Couleur de la thématique affichée',accent()]]);
+  const dots = (kind, list) => list.map(([i,n,h]) => `<button type="button" data-s${kind}="${i}" class="${SYM[kind]===i?'is-on':''}" style="background:${esc(h)}${i===-1?';background-image:conic-gradient('+C.themes.map(t=>t.couleur).join(',')+')':''}" aria-label="${esc(n)}" aria-pressed="${SYM[kind]===i}" title="${esc(n)}"></button>`).join('');
+  const r = ratio(fg, bg);
+  const items = S.items.map((it,i) => {
+    const m = it.img ? `url('${src(it.img)}')` : 'none';
+    return `<article class="sym" style="--sym-fg:${esc(fg)};--sym-bg:${esc(bg)}">
+      <div class="art-wrap">${it.img ? `<div class="art" style="--m:${m}" role="img" aria-label="${esc(it.nom)}"></div>` : '<div class="ph">Visuel à venir</div>'}${EDIT ? slot('symboles.items.'+i+'.img','', '') : ''}</div>
+      ${T('symboles.items.'+i+'.nom','h3')}
+      ${T('symboles.items.'+i+'.usage','p','',1)}
+    </article>`;
+  }).join('');
+  const call = (S.encadres || []).map((e,i) => {
+    const ic = S.items[e.icone];
+    const m = ic && ic.img ? `url('${src(ic.img)}')` : 'none';
+    return `<div class="callout"><div class="ic"><i style="--m:${m}"></i></div><div>${T('symboles.encadres.'+i+'.titre','h4')}${T('symboles.encadres.'+i+'.texte','p','',1)}</div></div>`;
+  }).join('');
+  $('#symboles').innerHTML = `
+    <div class="sec-head">${T('titres.symboles','h2')}${T('ledes.symboles','p','lede',1)}</div>
+    <div class="sym-tools">
+      <span class="lbl">Couleur</span><div class="dots">${dots('fg', opts.filter(o => o[0] !== -2))}</div>
+      <span class="lbl">Fond</span><div class="dots">${dots('bg', opts)}</div>
+      <span style="font-size:.9rem;color:var(--muted)">Contraste ${fr(r)}${r < 3 ? ' : trop faible, choisissez un autre fond' : ''}</span>
+    </div>
+    <div class="sym-grid">${items}</div>
+    ${T('titres.encadres','h3','sub')}
+    <div class="callouts">${call}</div>`;
+}
+function renderMood(){
+  const items = C.moodboard;
+  const tags = ['Tout'].concat([...new Set(items.map(m => m.tag).filter(Boolean))]);
+  if (!tags.includes(MOODF)) MOODF = 'Tout';
+  const tones = [['#074C39','#F6E5D4'],['#F7BBB4','#0E2A22'],['#A1C1D1','#0E2A22'],['#4458A4','#FFFDF9'],['#FFFDF9','#074C39']];
+  const heights = [220, 300, 180, 260, 200];
+  const cards = items.map((m,i) => {
+    if (!EDIT && MOODF !== 'Tout' && m.tag !== MOODF) return '';
+    const tone = tones[i % tones.length];
+    const visual = m.img ? slot('moodboard.'+i+'.img','', '')
+      : (EDIT && ASSETCAP ? `<div class="tile" style="background:${tone[0]};color:${tone[1]};min-height:${heights[i%5]}px;position:relative">${esc(m.legende)}<div class="slot-tools"><button type="button" data-upload="moodboard.${i}.img">Ajouter une image</button></div></div>`
+        : `<div class="tile" style="background:${tone[0]};color:${tone[1]};min-height:${heights[i%5]}px">${esc(m.legende)}</div>`);
+    return `<figure class="mood-item">${visual}${delBtn('moodboard.'+i,'Retirer')}
+      <figcaption>${m.img || EDIT ? T('moodboard.'+i+'.legende','span','',1) : ''}<span class="tag">${EDIT ? T('moodboard.'+i+'.tag') : esc(m.tag)}</span></figcaption></figure>`;
+  }).join('');
+  $('#univers').innerHTML = `
+    <div class="sec-head">${T('titres.univers','h2')}${T('ledes.univers','p','lede',1)}</div>
+    ${EDIT ? '' : `<div class="mood-filter chips on-paper" role="group" aria-label="Filtrer l'univers">${tags.map(t => `<button type="button" class="chip${MOODF===t?' is-on':''}" data-mf="${esc(t)}" aria-pressed="${MOODF===t}">${esc(t)}</button>`).join('')}</div>`}
+    <div class="mood">${cards}</div>
+    ${EDIT ? `<div style="margin-top:8px">${addBtn('moodboard','Ajouter une image à l’univers')}</div>` : ''}`;
+}
+function renderThemes(){
+  const th = C.themes.map((t,i) => `
+    <article class="theme${ACTIVE===i?' is-on':''}" data-theme="${i}" tabindex="0" role="button" aria-pressed="${ACTIVE===i}" aria-label="Voir la charte en ${esc(t.nom)}">
+      <div class="theme-band" style="background:${esc(t.couleur)};color:${inkFor(t.couleur)}"><span>${ACTIVE===i ? 'Affichée' : ''}</span><span>${esc(t.couleur.toUpperCase())}</span></div>
+      <div class="theme-body">
+        ${T('themes.'+i+'.nom','h3')}
+        ${T('themes.'+i+'.description','p','',1)}
+        <p class="ex"><em>Exemple : </em>${T('themes.'+i+'.exemple','span','',1)}</p>
+        ${(t.domaines||[]).length || EDIT ? `<div class="doms">${(t.domaines||[]).map((d,j) => EDIT ? `<span class="dom">${T('themes.'+i+'.domaines.'+j)} ${delBtn('themes.'+i+'.domaines.'+j,'×')}</span>` : `<button type="button" class="dom${ACTIVE===i&&DOMAIN===j?' is-on':''}" data-dom="${i}.${j}" style="--dc:${esc(t.couleur)}">${esc(d)}</button>`).join('')}${EDIT ? `<button type="button" class="add only-edit" style="min-height:0;padding:4px 10px" data-add="themes.${i}.domaines">Ajouter un domaine</button>` : ''}</div>` : ''}
+      </div>
+      ${EDIT ? `<div class="edit-row"><div class="hexedit"><input type="color" value="${esc(t.couleur)}" data-hex="themes.${i}.couleur" aria-label="Couleur de ${esc(t.nom)}"><input type="text" value="${esc(t.couleur)}" data-hext="themes.${i}.couleur" aria-label="Code hexadécimal"></div>${delBtn('themes.'+i,'Supprimer')}</div>` : ''}
+    </article>`).join('');
+  const cur0 = ACTIVE < 0 ? {nom: C.meta.nom, exemple: C.meta.exempleMarque} : C.themes[ACTIVE];
+  const sup = Object.assign({couverture:'Support de formation', document:'Attestation de formation', phrase:'Prénom Nom a suivi la formation', pied:'Livret stagiaire'}, cur0.supports || {});
+  const dom = ACTIVE >= 0 && DOMAIN >= 0 && cur0.domaines ? cur0.domaines[DOMAIN] : null;
+  const cur = {nom: dom ? cur0.nom + ' / ' + dom : cur0.nom, exemple: cur0.exemple};
+  const mot = maskStyle(110);
+  $('#thematiques').innerHTML = `
+    <div class="sec-head">${T('titres.thematiques','h2')}${T('ledes.thematiques','p','lede',1)}</div>
+    <div class="themes">${th}${addBtn('themes','Ajouter une thématique')}</div>
+    <div class="mock-head">${T('titres.apercu','h3','sub" style="margin:0')}${chipsHTML(true)}</div>
+    <div class="mocks">
+      <figure class="mock" style="margin:0">
+        <div class="mk mk-cover">
+          <div class="top"><div class="motif" style="${mot}"></div><span class="mk-tag">${esc(cur.nom)}</span></div>
+          <div class="body"><p class="kicker">${esc(sup.couverture)}</p><h4>${esc(cur.exemple)}</h4>
+            <div class="foot"><span>${esc(sup.pied)}</span><span class="mk-logo">${logoMark(false, true)}</span></div></div>
+        </div>
+        <figcaption>Couverture de document</figcaption>
+      </figure>
+      <figure class="mock" style="margin:0">
+        <div class="mk mk-post">${C.symboles.items[1] && C.symboles.items[1].img ? `<div class="mascot-peek" style="--m:url('${src(C.symboles.items[1].img)}')"></div>` : `<div class="motif" style="${mot}"></div>`}
+          <p>${esc(cur.exemple)}</p>
+          <div class="foot">${C.signature && C.signature.img ? `<span class="sig-mini" style="--m:url('${src(C.signature.img)}')"></span>` : '<span>Conseil et formation</span>'}<span class="mk-logo">${logoMark(inkFor(accent())===LIGHT, true)}</span></div>
+        </div>
+        <figcaption>Publication réseaux sociaux</figcaption>
+      </figure>
+      <figure class="mock" style="margin:0">
+        <div class="mk mk-att"><div class="stripe"></div>
+          <div class="in"><p class="kicker">${esc(C.meta.nom)}, conseil et formation</p><h4>${esc(sup.document)}</h4>
+            <p>${esc(sup.phrase)}</p><p class="ttl">${esc(cur.exemple)}</p>
+            <div class="foot"><span class="mk-tag">${esc(cur.nom)}</span><span class="mk-logo">${logoMark(false, true)}</span></div></div>
+        </div>
+        <figcaption>${esc(sup.document)}</figcaption>
+      </figure>
+    </div>`;
+}
+function renderFoot(){
+  const d = MAJ ? new Date(MAJ) : null;
+  $('#pied').innerHTML = `
+    <div>${T('meta.contact','p','',1)}${T('meta.version','p','small')}${d ? `<p class="small">Dernière mise à jour le ${d.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</p>` : ''}</div>
+    <div>${DL ? '<button type="button" class="btn" id="exportBtn">Télécharger une version autonome (.html)</button>' : ''}</div>`;
+}
+function renderAll(){
+  applyAccent(); loadFonts();
+  renderHero(); renderLogo(); renderSignature(); renderAlts(); renderCouleurs(); renderTypo(); renderSymboles(); renderElements(); renderMood(); renderThemes(); renderFoot();
+  document.documentElement.classList.toggle('editing', EDIT);
+  FIRST = false;
+}
+function setTheme(i, dom){
+  ACTIVE = i; DOMAIN = dom === undefined ? -1 : dom; applyAccent();
+  renderHero(); renderLogo(); renderSignature(); renderSymboles(); renderThemes();
+}
+
+/* ---------- Événements ---------- */
+document.addEventListener('click', async e => {
+  const t = e.target.closest('button,[data-theme],a');
+  if (!t) return;
+  const d = t.dataset;
+  if (d.dom) { const [ti,dj] = d.dom.split('.').map(Number); setTheme(ti, DOMAIN === dj && ACTIVE === ti ? -1 : dj); return; }
+  if (d.theme !== undefined && !(EDIT && e.target.closest('[data-edit],input,.del'))) { setTheme(+d.theme); return; }
+  if (d.copy !== undefined) return copyTxt(d.copy);
+  if (d.stage) { STAGE = d.stage; renderLogo(); return; }
+  if (d.mf) { MOODF = d.mf; renderMood(); return; }
+  if (d.pfg !== undefined) { PAT.fg = +d.pfg; renderElements(); return; }
+  if (d.pbg !== undefined) { PAT.bg = +d.pbg; renderElements(); return; }
+  if (d.pm !== undefined) { PAT.m = +d.pm; renderElements(); renderThemes(); return; }
+  if (d.gfg !== undefined) { SIG.fg = +d.gfg; renderSignature(); return; }
+  if (d.gbg !== undefined) { SIG.bg = +d.gbg; renderSignature(); return; }
+  if (d.sigdl) return sigDownload(d.sigdl);
+  if (d.sfg !== undefined) { SYM.fg = +d.sfg; renderSymboles(); return; }
+  if (d.sbg !== undefined) { SYM.bg = +d.sbg; renderSymboles(); return; }
+  if (d.upload) return pickAndUpload(d.upload);
+  if (d.clear) { setP(d.clear, null); markDirty(); renderAll(); return; }
+  if (d.add) return addItem(d.add);
+  if (d.del) { const ks = d.del.split('.'); const idx = +ks.pop(); const arr = getP(ks.join('.')); arr.splice(idx,1); markDirty(); renderAll(); return; }
+  if (d.police !== undefined) { const s = C.echelle[+d.police]; s.police = s.police === 0 ? 1 : 0; markDirty(); renderTypo(); return; }
+  if (d.dl) return downloadAsset(getP(d.dl), d.name);
+  if (t.id === 'exportBtn') return exportStandalone();
+});
+document.addEventListener('keydown', e => {
+  const el = e.target;
+  if (el.matches && el.matches('[data-theme][role=button]') && (e.key === 'Enter' || e.key === ' ') && !e.target.closest('[data-edit]')) { e.preventDefault(); setTheme(+el.dataset.theme); }
+  if (el.dataset && el.dataset.edit && e.key === 'Enter' && !el.dataset.ml) { e.preventDefault(); el.blur(); }
+});
+document.addEventListener('paste', e => {
+  const el = e.target.closest && e.target.closest('[data-edit]'); if (!el) return;
+  e.preventDefault(); const txt = (e.clipboardData || window.clipboardData).getData('text/plain');
+  document.execCommand('insertText', false, el.dataset.ml ? txt : txt.replace(/\s*\n\s*/g,' '));
+});
+document.addEventListener('input', e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.edit) {
+    const p = el.dataset.edit, v = el.innerText.replace(/\u00a0/g,' ').trim();
+    setP(p, v); markDirty();
+    document.querySelectorAll(`[data-bind="${p}"]`).forEach(o => { if (o !== el) o.textContent = v; });
+    return;
+  }
+  if (el.id === 'testerIn') { TESTER = el.value; document.querySelectorAll('[data-sample]').forEach(s => s.textContent = TESTER || C.typos[+s.dataset.sample].exemple); return; }
+  if (el.id === 'weightIn') { WEIGHT = +el.value; const s = $('[data-sample="0"]'); if (s) s.style.fontWeight = WEIGHT; if (EDIT) { C.typos[0].poids = WEIGHT; markDirty(); } return; }
+  if (el.id === 'patSize') { PAT.size = +el.value; const l = $('#patLayer'); l.style.webkitMaskSize = l.style.maskSize = PAT.size + 'px'; return; }
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if (el.id === 'zoneChk') { ZONE = el.checked; renderLogo(); return; }
+  if (el.dataset.hex) { setP(el.dataset.hex, el.value.toUpperCase()); markDirty(); renderAll(); return; }
+  if (el.dataset.hext) { if (validHex(el.value.trim())) { setP(el.dataset.hext, normHex(el.value.trim())); markDirty(); renderAll(); } else { toast('Code couleur invalide : utilisez le format #074C39'); } return; }
+});
+document.addEventListener('focusout', e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.edit && /^(meta\.nom|typos\.\d+\.nom|themes\.\d+\.nom|couleurs\.\d+\.nom|couleurs\.\d+\.part|echelle\.)/.test(el.dataset.edit)) {
+    setTimeout(() => { if (!document.activeElement || !document.activeElement.dataset || !document.activeElement.dataset.edit) renderAll(); }, 0);
+  }
+});
+
+async function copyTxt(t){
+  const v = String(t).replace(/^≈\s*/,'');
+  try { await navigator.clipboard.writeText(v); }
+  catch(err){ const ta = document.createElement('textarea'); ta.value = v; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch(x){} ta.remove(); }
+  toast('Copié : ' + v);
+}
+function addItem(list){
+  const tpl = {
+    'couleurs': {nom:'Nouvelle couleur', hex:'#888888', role:'Rôle de cette couleur', part:'5', cmjn:''},
+    'themes': {nom:'Nouvelle thématique', couleur:'#4458A4', description:'Ce que couvre cette thématique', exemple:'Titre d’une formation'},
+    'moodboard': {img:null, legende:'Légende de l’image', tag:'Divers'},
+    'assets.elements': {img:null, nom:'Nouvel élément', usage:'Règle d’usage'},
+    'logo.regles': 'Nouvelle règle',
+    'signature.regles': 'Nouvelle règle',
+    'echelle': {nom:'Nouveau niveau', taille:'12 pt', police:1, graisse:'400'}
+  }[list];
+  const arr = getP(list); if (!Array.isArray(arr)) return;
+  arr.push(clone(tpl !== undefined ? tpl : (/domaines$/.test(list) ? 'Nouveau domaine' : ''))); markDirty(); renderAll();
+}
+
+/* ---------- Images ---------- */
+let pendingPath = null;
+function pickAndUpload(path){ if (!ASSETCAP) { toast('L’import d’images n’est pas disponible ici.'); return; } pendingPath = path; const f = $('#filePick'); f.value = ''; f.click(); }
+$('#filePick').addEventListener('change', async e => {
+  const file = e.target.files[0]; if (!file || !pendingPath) return;
+  const path = pendingPath; pendingPath = null;
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  const types = {svg:'image/svg+xml', png:'image/png', jpg:'image/jpeg', jpeg:'image/jpeg', webp:'image/webp', gif:'image/gif'};
+  toast('Import en cours…');
+  try {
+    const res = await ASSETCAP.upload(file, file.type ? undefined : {type: types[ext]});
+    setP(path, res.id); markDirty(); renderAll(); toast('Image ajoutée. Pensez à enregistrer.');
+  } catch(err){
+    const msg = {too_large:'Image trop lourde (20 Mo maximum, 2 Mo pour un SVG).', unsupported_type:'Format non accepté : utilisez SVG, PNG, JPG ou WebP.', quota_or_state:'L’espace de stockage de la page est plein.', rate_limited:'Trop d’imports d’affilée, réessayez dans un instant.', not_granted:'Vous n’avez pas les droits pour importer des images.'}[err && err.code];
+    toast(msg || 'L’import a échoué, réessayez.');
+  }
+});
+async function downloadAsset(id, name){
+  if (!id || !DL) return;
+  try {
+    const b = await (await fetch(src(id))).blob();
+    const ext = {'image/svg+xml':'svg','image/png':'png','image/jpeg':'jpg','image/webp':'webp','image/gif':'gif','application/pdf':'pdf'}[b.type] || 'png';
+    await DL.save({filename: (name || 'fichier').replace(/['’\s]+/g,'-').toLowerCase() + '.' + ext, data: b});
+  } catch(err){ if (!err || err.code !== 'declined') toast('Le téléchargement n’a pas abouti.'); }
+}
+
+/* ---------- Export autonome ---------- */
+function collectIds(o, out){ out = out || new Set(); if (Array.isArray(o)) o.forEach(v => collectIds(v, out)); else if (o && typeof o === 'object') for (const k in o){ if (['img','principal','negatif','compact','compactNegatif'].includes(k) && typeof o[k] === 'string') out.add(o[k]); else collectIds(o[k], out); } return out; }
+const toDataURL = b => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(b); });
+async function exportStandalone(){
+  if (!DL) return;
+  if (DIRTY) toast('Export de la version affichée, y compris les changements non enregistrés.');
+  try {
+    const map = {};
+    for (const id of collectIds(C)) { map[id] = ASSETS[id] || await toDataURL(await (await fetch(src(id))).blob()); }
+    const cl = document.documentElement.cloneNode(true);
+    cl.classList.remove('editing');
+    cl.querySelector('#seed').textContent = JSON.stringify({contenu: C, assets: map, maj: MAJ}).replace(/</g, '\\u003c');
+    ['#top','#logo','#signature','#declinaisons','#couleurs','#typo','#symboles','#elements','#univers','#thematiques','#pied','#railBrand','#railFoot','#toast'].forEach(s => { const n = cl.querySelector(s); if (n) n.innerHTML = ''; });
+    cl.querySelector('#top').classList.add('intro-anim');
+    cl.removeAttribute('style');
+    const html = '<!DOCTYPE html>\n' + cl.outerHTML;
+    await DL.save({filename: 'charte-amicoop.html', data: new Blob([html], {type:'text/html'})});
+  } catch(err){ if (!err || err.code !== 'declined') toast('L’export n’a pas abouti.'); }
+}
+
+/* ---------- Mode édition ---------- */
+function setEdit(on){
+  EDIT = on;
+  $('#editbar').style.display = on ? 'block' : 'none';
+  $('#editToggle').style.display = on ? 'none' : (CAN_EDIT ? 'block' : 'none');
+  if (on) { $('#saveBtn').disabled = !DIRTY; $('#editMsg').textContent = 'Mode édition : cliquez sur un texte pour le modifier, sur une image pour la remplacer.'; }
+  renderAll();
+}
+$('#editToggle button').addEventListener('click', () => setEdit(true));
+$('#quitBtn').addEventListener('click', () => {
+  if (DIRTY && !confirm('Des modifications ne sont pas enregistrées. Quitter quand même ? Elles resteront affichées jusqu’au rechargement de la page.')) return;
+  setEdit(false);
+});
+$('#cancelBtn').addEventListener('click', () => { C = clone(LAST); DIRTY = false; $('#saveBtn').disabled = true; $('#editMsg').textContent = 'Changements annulés.'; renderAll(); });
+$('#saveBtn').addEventListener('click', async () => {
+  if (!DOC) return;
+  const b = $('#saveBtn'); b.disabled = true; b.textContent = 'Enregistrement…';
+  const maj = new Date().toISOString();
+  try {
+    await DOC.set({contenu: clone(C), maj: maj});
+    LAST = clone(C); DIRTY = false; MAJ = maj; renderFoot();
+    $('#editMsg').textContent = 'Charte enregistrée : tout le monde voit désormais cette version.';
+    toast('Charte enregistrée');
+  } catch(err){
+    b.disabled = false;
+    toast(err && err.code === 'invalid_argument' ? 'Enregistrement refusé : vos droits sur cette page ne le permettent pas.' : 'L’enregistrement a échoué, réessayez.');
+  }
+  b.textContent = 'Enregistrer';
+});
+
+/* ---------- Navigation active ---------- */
+if ('IntersectionObserver' in window){
+  const links = [...document.querySelectorAll('.rail a.nl')];
+  const io = new IntersectionObserver(ents => { ents.forEach(en => { if (en.isIntersecting) links.forEach(l => l.classList.toggle('is-here', l.getAttribute('href') === '#' + en.target.id)); }); }, {rootMargin: '-45% 0px -50% 0px'});
+  document.querySelectorAll('main > section').forEach(s => io.observe(s));
+}
+
+/* ---------- Capacités ---------- */
+renderAll();
+(async function(){
+  const cl = window.claude;
+  if (!cl || typeof cl.use !== 'function') return;
+  const [db, user, dl] = await Promise.all([cl.use('db'), cl.use('user'), cl.use('downloads')]);
+  if (dl) { DL = dl; renderLogo(); renderSignature(); renderFoot(); }
+  if (!db) return;
+  DOC = db.doc('charte/contenu');
+  DOC.onSnapshot(s => {
+    if (!s.exists || DIRTY) return;
+    const d = s.data();
+    if (d && d.contenu) { C = fill(clone(d.contenu), DEFAULT); LAST = clone(C); MAJ = d.maj || MAJ; renderAll(); }
+  }, () => {});
+  if (user) { try { CAN_EDIT = await user.canEdit(); } catch(e) { CAN_EDIT = false; } }
+  if (CAN_EDIT) { ASSETCAP = await cl.use('assets'); $('#editToggle').style.display = 'block'; }
+})();
+})();
+</script>
+</body>
+</html>
