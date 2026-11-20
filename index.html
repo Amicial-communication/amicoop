@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -246,6 +247,7 @@ main{min-width:0}
 .sym:nth-child(2) .art{width:78%;height:78%}
 .sym h3{font-size:1.25rem;font-weight:700;margin:14px 0 4px}
 .sym p{margin:0;font-size:.95rem;color:var(--muted)}
+.sym .art-img{width:80%;height:80%;object-fit:contain}
 .sym .slot{position:absolute;inset:0;background:transparent}
 .sym .slot img,.sym .slot .ph{opacity:0}
 .callouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:900px}
@@ -255,6 +257,7 @@ main{min-width:0}
 .callout h4{font-size:1.15rem;font-weight:700;margin:4px 0 6px;color:#074C39}
 .callout p{margin:0;font-size:.97rem;line-height:1.5}
 .mk-post .mascot-peek{position:absolute;right:18px;bottom:46px;width:92px;height:92px;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:currentColor;opacity:.9;transform:rotate(-8deg)}
+.mk-post .mascot-peek-img{position:absolute;right:16px;bottom:44px;width:96px;height:auto;transform:rotate(-8deg);opacity:.96}
 @media (max-width:980px){.sym-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.callouts{grid-template-columns:1fr}}
 
 /* ---------- Moodboard ---------- */
@@ -312,6 +315,32 @@ button.dom:hover{border-color:var(--ink)}
 .mk-att .ttl{font-family:var(--f-titre);font-weight:700;font-size:14px;margin:4px 0 8px;line-height:1.1}
 .mk-att .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:end}
 .mk-att .mk-tag{color:#0E2A22}
+
+/* ---------- Le kit ---------- */
+.kit-top{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.kit-list{display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.kit-row{display:grid;grid-template-columns:150px 108px minmax(0,1fr);gap:6px 20px;padding:13px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.kit-row .d{font-family:var(--f-titre);font-weight:700;font-size:1.05rem}
+.kit-row .n{font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.kit-row .t{font-size:.95rem;color:var(--muted)}
+.kit-cta{background:var(--forest);color:#F6E5D4;border-radius:10px;padding:clamp(22px,3vw,30px)}
+.kit-cta h3{font-size:1.45rem;color:#FFFDF9;margin-bottom:10px}
+.kit-cta p{margin:0 0 16px;font-size:.97rem;color:#C9D8D1}
+.kit-cta .btn{border-color:#F6E5D4;color:#F6E5D4;text-decoration:none}
+.kit-cta .btn:hover{background:#F6E5D4;color:#074C39}
+.kit-cta .lien{font-size:.84rem;color:#A9C4BA;overflow-wrap:anywhere;margin:14px 0 0}
+.kit-fmt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.kit-fmt .f{border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:var(--paper)}
+.kit-fmt .f h4{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.kit-fmt .f p{margin:0;font-size:.93rem;color:var(--muted)}
+.kit-nom{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92rem;line-height:1.5;
+ background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:11px 14px;color:var(--ink)!important}
+@media (max-width:980px){
+  .kit-top{grid-template-columns:1fr}
+  .kit-row{grid-template-columns:minmax(0,1fr) auto}
+  .kit-row .t{grid-column:1/-1}
+  .kit-fmt{grid-template-columns:1fr}
+}
 
 /* ---------- Pied ---------- */
 .foot-band{background:#074C39;color:#F6E5D4;padding:clamp(40px,6vw,72px) clamp(20px,5vw,80px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
@@ -391,6 +420,7 @@ html.editing .add.only-edit{display:flex!important}
       <li><a class="nl" href="#elements">Motifs</a></li>
       <li><a class="nl" href="#univers">Univers</a></li>
       <li><a class="nl" href="#thematiques">Thématiques</a></li>
+      <li><a class="nl" href="#kit">Le kit</a></li>
     </ul>
     <div class="rail-foot" id="railFoot"></div>
   </nav>
@@ -406,6 +436,7 @@ html.editing .add.only-edit{display:flex!important}
     <section class="sec" id="elements"></section>
     <section class="sec tint" id="univers"></section>
     <section class="sec" id="thematiques"></section>
+    <section class="sec tint" id="kit"></section>
     <footer class="foot-band" id="pied"></footer>
   </main>
 </div>
@@ -442,19 +473,23 @@ html.editing .add.only-edit{display:flex!important}
   "symboles": "Les symboles",
   "encadres": "Dans un support de formation",
   "signature": "La signature",
-  "signatureUsages": "La signature en situation"
+  "signatureUsages": "La signature en situation",
+  "kit": "Le kit d’identité",
+  "kitFormats": "Quel format pour quel usage",
+  "kitRegles": "Nommage et règles"
  },
  "ledes": {
   "logo": "Le symbole assemble quatre A : Amicial, Accompagnement, Autonomie, Appui. Quatre bras tendus qui se rejoignent au centre, comme pour sceller un accord. Sous le nom, la signature : par le domicile, pour le domicile.",
   "declinaisons": "Le logo de référence est en contour. Il existe aussi en version pleine, et le symbole comme le nom peuvent vivre seuls quand le format ou le support le demande.",
-  "couleurs": "Le vert forêt et le crème portent la marque, le noir encre écrit le nom. L'indigo, le ciel et le pêche viennent en ponctuation. Cliquez sur un code pour le copier.",
+  "couleurs": "Le vert forêt et le crème portent la marque, le noir encre écrit le nom. L'indigo, le ciel et le pêche viennent en ponctuation. Les Pantone sont les références retenues pour la marque ; les CMJN sont la conversion du RVB sans profil colorimétrique, à faire confirmer par l'imprimeur. Cliquez sur un code pour le copier.",
   "contraste": "Chaque case pose un texte de la palette sur un fond de la palette, avec son ratio de contraste.",
   "typo": "Bricolage Grotesque donne la voix : un dessin franc, un peu brut, qui assume son caractère. Hanken Grotesk fait le travail de lecture, des supports de formation aux mails.",
   "elements": "Deux motifs tirés du symbole : l'un en contour, léger, l'autre en plein, plus affirmé. Réglez-les pour voir ce qu'ils donnent sur chaque fond.",
   "univers": "Ce qu'Ami'coop montre, et comment : des personnes réelles, des lieux réels, de la lumière naturelle.",
   "thematiques": "Le vert forêt signe la formation, l'indigo signe le conseil. À l'intérieur de chaque offre, les domaines se distinguent par leur nom et leur pictogramme, jamais par une nouvelle couleur : la marque reste lisible, quel que soit le support.",
-  "symboles": "L'apostrophe est la forme mère de l'identité. La mascotte, c'est l'apostrophe qui prend vie ; les pictogrammes Astuce et Info en reprennent le trait. Changez la couleur pour les voir dans toute la palette.",
-  "signature": "Elle dit en une phrase ce qu'Ami'coop défend : un organisme né du domicile, qui travaille pour le domicile. Elle accompagne le logo, ou vit seule sur le site, les réseaux et les supports. Choisissez une couleur et un fond, puis téléchargez-la prête à l'emploi."
+  "symboles": "L'apostrophe est la forme mère de l'identité. La mascotte, c'est l'apostrophe qui prend vie ; les pictogrammes Astuce et Info en reprennent le trait. Le réglage de couleur agit sur les trois formes monochromes : la mascotte, elle, garde ses propres couleurs.",
+  "signature": "Elle dit en une phrase ce qu'Ami'coop défend : un organisme né du domicile, qui travaille pour le domicile. Elle accompagne le logo, ou vit seule sur le site, les réseaux et les supports. Choisissez une couleur et un fond, puis téléchargez-la prête à l'emploi.",
+  "kit": "Tous les fichiers de la marque, rangés et nommés de la même façon. Cette charte dit ce qu'il faut faire ; le kit donne de quoi le faire. On y puise, on n'y redessine rien."
  },
  "logo": {
   "principal": null,
@@ -519,42 +554,48 @@ html.editing .add.only-edit{display:flex!important}
    "hex": "#074C39",
    "role": "Couleur d'identité et couleur de la formation : logo, titres, grands aplats.",
    "part": "25",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": "PANTONE 3308 C"
   },
   {
    "nom": "Crème",
    "hex": "#F6E5D4",
    "role": "Fond principal des supports, la respiration de la marque.",
    "part": "50",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": "PANTONE 705 C"
   },
   {
    "nom": "Indigo",
    "hex": "#4458A4",
    "role": "Couleur du conseil : supports de mission, propositions, rapports.",
    "part": "10",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": "PANTONE 2756 C ≈"
   },
   {
    "nom": "Ciel",
    "hex": "#A1C1D1",
    "role": "Accent doux : fonds secondaires, graphiques.",
    "part": "5",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": "PANTONE 5445 C ≈"
   },
   {
    "nom": "Pêche",
    "hex": "#F7BBB4",
    "role": "Accent chaleureux. En texte, uniquement sur fond sombre.",
    "part": "5",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": "PANTONE 489 C ≈"
   },
   {
    "nom": "Noir encre",
    "hex": "#1D1D1B",
    "role": "Couleur du nom dans le logo. Textes longs quand le vert serait trop présent.",
    "part": "5",
-   "cmjn": ""
+   "cmjn": "",
+   "pantone": ""
   }
  ],
  "typos": [
@@ -706,7 +747,8 @@ html.editing .add.only-edit{display:flex!important}
    {
     "img": null,
     "nom": "La mascotte",
-    "usage": "L'apostrophe qui prend vie. Supports pédagogiques, accueil des stagiaires, réseaux sociaux. Pas sur les documents institutionnels ni contractuels."
+    "usage": "L'apostrophe qui prend vie. Supports pédagogiques, accueil des stagiaires, réseaux sociaux. Pas sur les documents institutionnels ni contractuels.",
+    "fixe": true
    },
    {
     "img": null,
@@ -741,6 +783,71 @@ html.editing .add.only-edit{display:flex!important}
    "Seule, elle sert d'accroche ou de conclusion, jamais de texte courant.",
    "Avec le logo, elle garde sa place sous le nom : on ne la déplace pas et on ne la recompose pas dans une autre police.",
    "Dans un texte, on l'écrit en toutes lettres, sans guillemets ni italique."
+  ]
+ },
+ "kit": {
+  "titreCta": "Télécharger le kit",
+  "texteCta": "Le kit complet est hébergé sur la bibliothèque du service communication. Un seul dossier compressé, à décompresser tel quel : l'arborescence fait partie du kit.",
+  "lien": "",
+  "version": "Version 1 — novembre 2026 — 282 fichiers, 17 Mo",
+  "dossiers": [
+   {
+    "nom": "01_Logo",
+    "nb": "102 fichiers",
+    "detail": "Logo complet, symbole seul et logotype seul. Contour et plein, six couleurs chacun, dans les trois formats."
+   },
+   {
+    "nom": "02_Mascotte",
+    "nb": "78 fichiers",
+    "detail": "La mascotte simple en cinq couleurs, et 31 poses détourées sur fond transparent."
+   },
+   {
+    "nom": "03_Icones",
+    "nb": "34 fichiers",
+    "detail": "Astuce et Info, les deux pictogrammes des supports de formation, dans toute la palette."
+   },
+   {
+    "nom": "04_Elements",
+    "nb": "34 fichiers",
+    "detail": "L’apostrophe et la pale : les deux formes graphiques qui vivent seules, hors du logo."
+   },
+   {
+    "nom": "05_Motifs",
+    "nb": "24 fichiers",
+    "detail": "Les deux motifs en tuiles vectorielles, six couleurs chacun. Elles se répètent sans raccord visible et s’agrandissent sans perte."
+   },
+   {
+    "nom": "06_Couleurs",
+    "nb": "5 fichiers",
+    "detail": "Nuancier PDF, palette .ase pour Illustrator et InDesign, codes HEX, RVB et CMJN."
+   },
+   {
+    "nom": "07_Typographies",
+    "nb": "4 fichiers",
+    "detail": "Bricolage Grotesque et Hanken Grotesk, avec leurs licences SIL OFL. Libres d’usage, y compris par vos prestataires."
+   }
+  ],
+  "formats": [
+   {
+    "nom": "SVG",
+    "usage": "Le format de référence. Web, bureautique, et tout fichier qu’un graphiste va reprendre. Il s’agrandit sans jamais pixelliser."
+   },
+   {
+    "nom": "PNG",
+    "usage": "Fond transparent, pour les outils qui n’acceptent pas le SVG : Word, PowerPoint, Canva, réseaux sociaux."
+   },
+   {
+    "nom": "PDF",
+    "usage": "Pour l’imprimeur et les prestataires. Vectoriel lui aussi, et accepté partout dans la chaîne graphique."
+   }
+  ],
+  "nommage": "Amicoop_Element-variante_couleur.svg — par exemple Amicoop_Logo-contour_creme.svg",
+  "regles": [
+   "On prend le fichier de la couleur voulue : on ne recolorie pas un fichier dans un logiciel de mise en page, et on ne pose pas un filtre sur une version existante.",
+   "Le symbole ne se redessine pas. Ses quatre bras ont été tracés à la main et ne sont pas identiques entre eux : reconstruit à partir d’un seul bras pivoté, il devient un autre signe.",
+   "La pale est un élément graphique décoratif. Elle ne remplace jamais le symbole et ne sert pas à le reconstruire.",
+   "Les fichiers du kit ne se renomment pas : le nom dit la variante et la couleur, c’est ce qui permet de retrouver le bon fichier dans six mois.",
+   "Une version manque ? On la demande plutôt que de la fabriquer : elle est ajoutée au kit et tout le monde en profite."
   ]
  }
 }
@@ -1004,7 +1111,8 @@ function renderCouleurs(){
         <dl class="codes">
           <dt>HEX</dt><dd><button type="button" class="copy" data-copy="${esc(c.hex.toUpperCase())}">${esc(c.hex.toUpperCase())}</button></dd>
           <dt>RVB</dt><dd><button type="button" class="copy" data-copy="${r}">${r}</button></dd>
-          <dt>CMJN</dt><dd>${EDIT ? `<span data-edit="couleurs.${i}.cmjn" data-bind="couleurs.${i}.cmjn" contenteditable="true">${esc(cm)}</span>` : `<button type="button" class="copy" data-copy="${esc(cm)}" title="${approx ? 'Valeur approchée, à confirmer avec l’imprimeur' : ''}">${approx ? '≈ ' : ''}${esc(cm)}</button>`}</dd>
+          <dt>CMJN</dt><dd>${EDIT ? `<span data-edit="couleurs.${i}.cmjn" data-bind="couleurs.${i}.cmjn" contenteditable="true">${esc(cm)}</span>` : `<button type="button" class="copy" data-copy="${esc(cm)}" title="${approx ? 'Valeur calculée, à confirmer avec l’imprimeur' : 'Valeur validée'}">${approx ? '≈ ' : ''}${esc(cm)}</button>`}</dd>
+          ${(c.pantone || EDIT) ? `<dt>Pantone</dt><dd>${EDIT ? `<span data-edit="couleurs.${i}.pantone" data-bind="couleurs.${i}.pantone" contenteditable="true">${esc(c.pantone || '')}</span>` : `<button type="button" class="copy" data-copy="${esc(c.pantone)}">${esc(c.pantone)}</button>`}</dd>` : ''}
         </dl>
         ${EDIT ? `<div>${delBtn('couleurs.'+i,'Supprimer la couleur')}</div>` : ''}
       </div>
@@ -1119,8 +1227,11 @@ function renderSymboles(){
   const r = ratio(fg, bg);
   const items = S.items.map((it,i) => {
     const m = it.img ? `url('${src(it.img)}')` : 'none';
+    const art = !it.img ? '<div class="ph">Visuel à venir</div>'
+      : it.fixe ? `<img class="art-img" src="${esc(src(it.img))}" alt="${esc(it.nom)}">`
+      : `<div class="art" style="--m:${m}" role="img" aria-label="${esc(it.nom)}"></div>`;
     return `<article class="sym" style="--sym-fg:${esc(fg)};--sym-bg:${esc(bg)}">
-      <div class="art-wrap">${it.img ? `<div class="art" style="--m:${m}" role="img" aria-label="${esc(it.nom)}"></div>` : '<div class="ph">Visuel à venir</div>'}${EDIT ? slot('symboles.items.'+i+'.img','', '') : ''}</div>
+      <div class="art-wrap">${art}${EDIT ? slot('symboles.items.'+i+'.img','', '') : ''}</div>
       ${T('symboles.items.'+i+'.nom','h3')}
       ${T('symboles.items.'+i+'.usage','p','',1)}
     </article>`;
@@ -1193,7 +1304,7 @@ function renderThemes(){
         <figcaption>Couverture de document</figcaption>
       </figure>
       <figure class="mock" style="margin:0">
-        <div class="mk mk-post">${C.symboles.items[1] && C.symboles.items[1].img ? `<div class="mascot-peek" style="--m:url('${src(C.symboles.items[1].img)}')"></div>` : `<div class="motif" style="${mot}"></div>`}
+        <div class="mk mk-post">${C.symboles.items[1] && C.symboles.items[1].img ? (C.symboles.items[1].fixe ? `<img class="mascot-peek-img" src="${esc(src(C.symboles.items[1].img))}" alt="">` : `<div class="mascot-peek" style="--m:url('${src(C.symboles.items[1].img)}')"></div>`) : `<div class="motif" style="${mot}"></div>`}
           <p>${esc(cur.exemple)}</p>
           <div class="foot">${C.signature && C.signature.img ? `<span class="sig-mini" style="--m:url('${src(C.signature.img)}')"></span>` : '<span>Conseil et formation</span>'}<span class="mk-logo">${logoMark(inkFor(accent())===LIGHT, true)}</span></div>
         </div>
@@ -1209,6 +1320,39 @@ function renderThemes(){
       </figure>
     </div>`;
 }
+function renderKit(){
+  const K = C.kit;
+  const rows = K.dossiers.map((d,i) => `<div class="kit-row">
+      <span class="d">${T('kit.dossiers.'+i+'.nom')}</span>
+      <span class="n">${T('kit.dossiers.'+i+'.nb')}</span>
+      <span class="t">${T('kit.dossiers.'+i+'.detail','span','',1)} ${delBtn('kit.dossiers.'+i,'Retirer')}</span>
+    </div>`).join('');
+  const fmts = K.formats.map((f,i) => `<div class="f">${T('kit.formats.'+i+'.nom','h4')}${T('kit.formats.'+i+'.usage','p','',1)}</div>`).join('');
+  const lien = String(K.lien || '').trim();
+  const ouvrable = /^https:\/\//i.test(lien);
+  $('#kit').innerHTML = `
+    <div class="sec-head">${T('titres.kit','h2')}${T('ledes.kit','p','lede',1)}</div>
+    <div class="kit-top">
+      <div>
+        <div class="kit-list">${rows}</div>
+        ${EDIT ? `<div style="margin-top:14px">${addBtn('kit.dossiers','Ajouter un dossier')}</div>` : ''}
+      </div>
+      <div class="kit-cta">
+        ${T('kit.titreCta','h3')}
+        ${T('kit.texteCta','p','',1)}
+        ${ouvrable ? `<a class="btn" href="${esc(lien)}" target="_blank" rel="noopener">Ouvrir le kit</a>` : '<p class="lien">Adresse du kit à renseigner en mode édition.</p>'}
+        ${EDIT ? `<p class="lien">Adresse (https://…) : ${T('kit.lien')}</p>` : ''}
+        <p class="lien">${T('kit.version')}</p>
+      </div>
+    </div>
+    ${T('titres.kitFormats','h3','sub')}
+    <div class="kit-fmt">${fmts}</div>
+    ${T('titres.kitRegles','h3','sub')}
+    <div class="rules" style="max-width:900px">
+      <div class="rule"><h3>Comment les fichiers sont nommés</h3><p class="kit-nom">${T('kit.nommage','span')}</p></div>
+      <div class="rule"><h3>Règles d’emploi</h3><ul>${K.regles.map((r,i) => `<li>${T('kit.regles.'+i,'span','',1)} ${delBtn('kit.regles.'+i,'Retirer')}</li>`).join('')}</ul>${EDIT ? `<div style="margin-top:10px">${addBtn('kit.regles','Ajouter une règle')}</div>` : ''}</div>
+    </div>`;
+}
 function renderFoot(){
   const d = MAJ ? new Date(MAJ) : null;
   $('#pied').innerHTML = `
@@ -1217,7 +1361,7 @@ function renderFoot(){
 }
 function renderAll(){
   applyAccent(); loadFonts();
-  renderHero(); renderLogo(); renderSignature(); renderAlts(); renderCouleurs(); renderTypo(); renderSymboles(); renderElements(); renderMood(); renderThemes(); renderFoot();
+  renderHero(); renderLogo(); renderSignature(); renderAlts(); renderCouleurs(); renderTypo(); renderSymboles(); renderElements(); renderMood(); renderThemes(); renderKit(); renderFoot();
   document.documentElement.classList.toggle('editing', EDIT);
   FIRST = false;
 }
@@ -1295,13 +1439,15 @@ async function copyTxt(t){
 }
 function addItem(list){
   const tpl = {
-    'couleurs': {nom:'Nouvelle couleur', hex:'#888888', role:'Rôle de cette couleur', part:'5', cmjn:''},
+    'couleurs': {nom:'Nouvelle couleur', hex:'#888888', role:'Rôle de cette couleur', part:'5', cmjn:'', pantone:''},
     'themes': {nom:'Nouvelle thématique', couleur:'#4458A4', description:'Ce que couvre cette thématique', exemple:'Titre d’une formation'},
     'moodboard': {img:null, legende:'Légende de l’image', tag:'Divers'},
     'assets.elements': {img:null, nom:'Nouvel élément', usage:'Règle d’usage'},
     'logo.regles': 'Nouvelle règle',
     'signature.regles': 'Nouvelle règle',
-    'echelle': {nom:'Nouveau niveau', taille:'12 pt', police:1, graisse:'400'}
+    'echelle': {nom:'Nouveau niveau', taille:'12 pt', police:1, graisse:'400'},
+    'kit.dossiers': {nom:'00_Dossier', nb:'0 fichier', detail:'Ce que contient ce dossier'},
+    'kit.regles': 'Nouvelle règle'
   }[list];
   const arr = getP(list); if (!Array.isArray(arr)) return;
   arr.push(clone(tpl !== undefined ? tpl : (/domaines$/.test(list) ? 'Nouveau domaine' : ''))); markDirty(); renderAll();
@@ -1345,7 +1491,7 @@ async function exportStandalone(){
     const cl = document.documentElement.cloneNode(true);
     cl.classList.remove('editing');
     cl.querySelector('#seed').textContent = JSON.stringify({contenu: C, assets: map, maj: MAJ}).replace(/</g, '\\u003c');
-    ['#top','#logo','#signature','#declinaisons','#couleurs','#typo','#symboles','#elements','#univers','#thematiques','#pied','#railBrand','#railFoot','#toast'].forEach(s => { const n = cl.querySelector(s); if (n) n.innerHTML = ''; });
+    ['#top','#logo','#signature','#declinaisons','#couleurs','#typo','#symboles','#elements','#univers','#thematiques','#kit','#pied','#railBrand','#railFoot','#toast'].forEach(s => { const n = cl.querySelector(s); if (n) n.innerHTML = ''; });
     cl.querySelector('#top').classList.add('intro-anim');
     cl.removeAttribute('style');
     const html = '<!DOCTYPE html>\n' + cl.outerHTML;
@@ -1411,3 +1557,5 @@ renderAll();
 </script>
 </body>
 </html>
+
+</body></html>
