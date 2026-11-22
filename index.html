@@ -132,10 +132,9 @@ main{min-width:0}
 .sig-tools{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:16px}
 .sig-tools .lbl{font-weight:600;font-size:.95rem}
 .sig-note{font-size:.9rem;color:var(--muted)}
-.sig-uses{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,28px);align-items:start}
+.sig-uses{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(16px,3vw,28px);align-items:start}
 .sig-lock{border-radius:6px;display:grid;place-items:center;padding:clamp(18px,3vw,30px);min-height:150px;transition:background-color .3s}
 .sig-lock img{max-height:92px;width:auto;max-width:100%}
-@media (max-width:1240px){.sig-uses{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
 .use figcaption{font-size:.88rem;color:var(--muted);margin-top:10px}
 .use-site{border-radius:6px;overflow:hidden;box-shadow:0 1px 2px rgba(14,42,34,.12),0 12px 32px -12px rgba(14,42,34,.35);background:#FFFDF9}
 .use-site .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:var(--accent);color:var(--accent-ink);transition:background-color .4s}
@@ -346,6 +345,29 @@ button.dom:hover{border-color:var(--ink)}
   .kit-fmt{grid-template-columns:1fr}
 }
 
+/* ---------- Signature de mail ---------- */
+.mailsw-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.mailsw{overflow:hidden;border:1px solid var(--line);border-radius:8px;background:#FFFDF9}
+.mailsw-track{display:flex;transition:transform .5s cubic-bezier(.22,.8,.24,1)}
+.mailsw-pan{flex:none;padding:clamp(22px,3.5vw,38px)}
+.mailsig{display:grid;grid-template-columns:172px minmax(0,1fr);gap:0 24px;max-width:540px;color:#0E2A22}
+.mailsig .ph2{width:132px;height:166px;box-sizing:border-box;border:4px solid currentColor;
+ border-top-color:transparent;border-radius:0 0 66px 66px/0 0 66px 66px;overflow:hidden;background:#F6E5D4}
+.mailsig .ph2 img{width:100%;height:100%;object-fit:cover;object-position:58% 26%}
+.mailsig .ph2 .ph{font-size:.8rem}
+.mailsig .id{font-size:14px;line-height:22px;padding-top:4px;font-family:Arial,Helvetica,sans-serif}
+.mailsig .id b{display:block;font-size:16px;line-height:22px;font-family:inherit}
+.mailsig .id .f{color:#4D635C}
+.mailsig .id .o{font-weight:700}
+.mailsig .id .sp{display:block;height:7px}
+.mailsig .lg{display:flex;align-items:center;gap:11px;padding-top:20px}
+.mailsig .lg .tuile{width:52px;height:52px;flex:none;display:grid;place-items:center}
+.mailsig .lg .tuile i{width:76%;height:76%;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:#F6E5D4}
+.mailsig .lg .mot{width:93px;height:52px;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat;background:#1D1D1B}
+.mailsig .bs{margin-top:auto;align-self:flex-start;width:232px;height:24px;margin-bottom:8px;-webkit-mask:var(--m) left bottom/contain no-repeat;mask:var(--m) left bottom/contain no-repeat;background:#1D1D1B}
+@media (max-width:620px){.mailsig{grid-template-columns:1fr;gap:16px}.mailsig .bs{margin:14px 0 0}}
+@media (prefers-reduced-motion:reduce){.mailsw-track{transition:none}}
+
 /* ---------- Pied ---------- */
 .foot-band{background:#074C39;color:#F6E5D4;padding:clamp(40px,6vw,72px) clamp(20px,5vw,80px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:end}
 .foot-band p{margin:0 0 6px;max-width:60ch}
@@ -480,7 +502,8 @@ html.editing .add.only-edit{display:flex!important}
   "signatureUsages": "La signature en situation",
   "kit": "Le kit d’identité",
   "kitFormats": "Quel format pour quel usage",
-  "kitRegles": "Nommage et règles"
+  "kitRegles": "Nommage et règles",
+  "signatureMail": "La signature de mail"
  },
  "ledes": {
   "logo": "Le symbole assemble quatre A : Amicial, Accompagnement, Autonomie, Appui. Quatre bras tendus qui se rejoignent au centre, comme pour sceller un accord. Sous le nom, la signature : par le domicile, pour le domicile.",
@@ -886,6 +909,7 @@ let EDIT = false, DIRTY = false, ACTIVE = -1, STAGE = 'clair', ZONE = false, TES
 let PAT = {fg: 0, bg: 1, size: 200, m: 0};
 let SYM = {fg: 0, bg: -2};
 let SIG = {fg: 0, bg: -2, r: 11.7};
+let MAILSW = 0;
 let DOC = null, ASSETCAP = null, DL = null, CAN_EDIT = false, MAJ = SEED.maj || null, FIRST = true;
 
 /* ---------- Utilitaires ---------- */
@@ -1027,6 +1051,47 @@ function renderLogo(){
     ${T('titres.interdits','h3','sub')}
     <div class="bad-grid">${bads}</div>`;
 }
+function mailSignature(){
+  const th = C.themes.length ? C.themes : [{nom: 'Ami’coop', couleur: accent()}];
+  if (MAILSW >= th.length) MAILSW = 0;
+  const part = 100 / th.length;
+  const mq = id => id ? `url('${src(id)}')` : 'none';
+  const alt = n => (C.logo.alternatifs || []).find(a => (a.nom || '').toLowerCase().includes(n));
+  const symb = (alt('symbole plein') || {}).img || (alt('symbole') || {}).img;
+  const motId = C.logo.compact || (alt('nom seul') || {}).img;
+  const portrait = (C.moodboard.find(m => m.img && m.tag === 'Personnes') || C.moodboard.find(m => m.img) || {}).img;
+  const base = C.signature.img;
+
+  const pans = th.map(t => `<div class="mailsw-pan" style="width:${part}%">
+    <div class="mailsig">
+      <div>
+        <div class="ph2" style="color:${esc(t.couleur)}">${portrait ? `<img src="${esc(src(portrait))}" alt="">` : '<div class="ph">Photo</div>'}</div>
+        <div class="lg">
+          <span class="tuile" style="background:${esc(t.couleur)}"><i style="--m:${mq(symb)}"></i></span>
+          <span class="mot" style="--m:${mq(motId)}"></span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;height:100%">
+        <div class="id">
+          <b>Prénom NOM</b>
+          <span class="f">Fonction</span><br>
+          <span class="o" style="color:${esc(t.couleur)}">${esc(C.meta.nom)} &nbsp;|&nbsp; ${esc(t.nom)}</span>
+          <span class="sp"></span>
+          06 00 00 00 00<br>prenom.nom@amicoop.fr<br>
+          <span style="color:${esc(t.couleur)};font-weight:700">amicoop.fr</span>
+        </div>
+        <span class="bs" style="--m:${mq(base)}"></span>
+      </div>
+    </div></div>`).join('');
+
+  const onglets = th.map((t,i) => `<button type="button" class="chip${MAILSW===i?' is-on':''}" data-mailsw="${i}" aria-pressed="${MAILSW===i}"><i style="background:${esc(t.couleur)}"></i>${esc(t.nom)}</button>`).join('');
+
+  return `${T('titres.signatureMail','h3','sub')}
+    <p class="lede" style="margin:-8px 0 0">${esc(C.meta.nom)} signe ses mails de la même façon dans les deux offres : seule la couleur change. Basculez pour comparer.</p>
+    <div class="mailsw-head chips on-paper" role="group" aria-label="Offre" style="margin-top:18px">${onglets}</div>
+    <div class="mailsw"><div class="mailsw-track" style="width:${th.length*100}%;transform:translateX(-${MAILSW*part}%)">${pans}</div></div>
+    <p class="cap" style="font-size:.9rem;color:var(--muted);margin-top:10px">540 px de large, photo détourée en arche, logo et baseline en pied. Les fichiers prêts à l’emploi sont dans le kit.</p>`;
+}
 function renderSignature(){
   const G = C.signature, cs = C.couleurs;
   const colOf = i => i === -1 ? accent() : i === -2 ? '#FFFDF9' : (cs[i] ? cs[i].hex : '#074C39');
@@ -1074,17 +1139,11 @@ function renderSignature(){
         <figcaption>En-tête du site, aux couleurs de la thématique affichée</figcaption>
       </figure>
       <figure class="use" style="margin:0">
-        <div class="use-mail">
-          <div class="who">Prénom Nom</div><div>Chargée de formation</div><div style="color:#4D635C">06 00 00 00 00</div>
-          <div class="row">${logoPlein ? `<img src="${esc(src(logoPlein))}" alt="" style="height:40px">` : wordmark()}</div>
-        </div>
-        <figcaption>Signature de mail : le logo complet suffit, la baseline y figure déjà</figcaption>
-      </figure>
-      <figure class="use" style="margin:0">
         <div class="sig-lock" style="background:${esc(bg)}">${logoStage ? `<img src="${esc(src(logoStage))}" alt="Logo complet ${esc(C.meta.nom)}">` : wordmark()}</div>
         <figcaption>Le logo complet porte déjà la signature sous le nom : on ne la répète pas à côté.</figcaption>
       </figure>
-    </div>`;
+    </div>
+    ${mailSignature()}`;
   if (G.img && !renderSignature._r){
     renderSignature._r = 1;
     const im = new Image(); im.onload = () => { if (im.naturalHeight) { SIG.r = +(im.naturalWidth / im.naturalHeight).toFixed(2); const a = $('.sig-art'); if (a) a.style.setProperty('--r', SIG.r); } }; im.src = src(G.img);
@@ -1412,6 +1471,16 @@ document.addEventListener('click', async e => {
   if (d.pfg !== undefined) { PAT.fg = +d.pfg; renderElements(); return; }
   if (d.pbg !== undefined) { PAT.bg = +d.pbg; renderElements(); return; }
   if (d.pm !== undefined) { PAT.m = +d.pm; renderElements(); renderThemes(); return; }
+  if (d.mailsw !== undefined) {
+    MAILSW = +d.mailsw;
+    const n = Math.max(1, C.themes.length), tr = $('.mailsw-track');
+    if (tr) tr.style.transform = `translateX(-${MAILSW * (100 / n)}%)`;
+    document.querySelectorAll('[data-mailsw]').forEach(b => {
+      const on = +b.dataset.mailsw === MAILSW;
+      b.classList.toggle('is-on', on); b.setAttribute('aria-pressed', on);
+    });
+    return;
+  }
   if (d.gfg !== undefined) { SIG.fg = +d.gfg; renderSignature(); return; }
   if (d.gbg !== undefined) { SIG.bg = +d.gbg; renderSignature(); return; }
   if (d.sigdl) return sigDownload(d.sigdl);
