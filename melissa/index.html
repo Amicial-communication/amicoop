@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Melissa Ramon – Ami’coop</title>
+<meta name="description" content="Carte de visite numérique de Melissa Ramon, Directrice Ami’coop : conseil et formation pour le domicile.">
+<meta name="theme-color" content="#074C39" id="theme-color">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Melissa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* Couleurs Ami'coop : vert du site (#074C39) et indigo du logo (#4458A4) */
+  body[data-theme="formation"] { --bg:#074C39; --btn:#074C39; --accent:#A9DBC3; --soft:#CFE6DB; }
+  body[data-theme="conseil"]   { --bg:#4458A4; --btn:#3B4E96; --accent:#C6CEF2; --soft:#DADFF4; }
+  :root { --ink:#12202B; }
+  * { box-sizing: border-box; margin: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    transition: background-color .25s ease;
+  }
+  .page { width: 100%; max-width: 460px; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 32px); }
+
+  /* Arche blanche : le logo est posé sur fond blanc */
+  .top {
+    background: #fff;
+    padding: calc(env(safe-area-inset-top, 0px) + 28px) 24px 82px;
+    border-radius: 0 0 50% 50% / 0 0 56px 56px;
+    text-align: center;
+  }
+  .logo { width: min(66%, 250px); height: auto; display: inline-block; }
+  .logo[hidden] { display: none; }
+
+  .identity { text-align: center; padding: 0 24px; margin-top: -62px; }
+  .photo {
+    width: 128px; height: 128px; border-radius: 50%;
+    object-fit: cover; object-position: 50% 28%;
+    border: 5px solid #fff; background: var(--soft);
+    display: block; margin: 0 auto 16px;
+  }
+  h1 { font-weight: 700; font-size: 1.7rem; line-height: 1.2; }
+  .role { margin-top: 4px; font-size: 1.1rem; font-weight: 500; color: var(--soft); }
+  .tagline { margin-top: 6px; font-family: "Caveat", cursive; font-size: 1.35rem; font-weight: 600; color: var(--accent); }
+
+  /* Bascule Formation / Conseil */
+  .tabs { display: flex; gap: 4px; margin: 24px 20px 0; padding: 4px; background: rgba(0,0,0,.2); border-radius: 999px; }
+  .tab {
+    flex: 1; font: inherit; font-weight: 600; font-size: 1.02rem;
+    padding: 13px 10px; border: 0; border-radius: 999px;
+    background: transparent; color: #fff; cursor: pointer;
+  }
+  .tab[aria-selected="true"] { background: #fff; color: var(--btn); }
+
+  .intro { margin: 18px 28px 0; text-align: center; font-size: 1rem; line-height: 1.45; color: var(--soft); text-wrap: balance; }
+  .links { list-style: none; padding: 0 20px; margin-top: 16px; display: grid; gap: 12px; }
+  .contact-title { margin: 28px 28px 0; font-size: .85rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+  .link {
+    display: flex; align-items: center; gap: 14px;
+    width: 100%; min-height: 60px; padding: 10px 22px;
+    border-radius: 999px; border: 2px solid #fff;
+    background: #fff; color: var(--btn);
+    text-decoration: none; font: inherit; text-align: left; cursor: pointer;
+  }
+  .link:active { transform: scale(.985); }
+  .link svg { flex: none; width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .link .t { display: block; font-weight: 600; font-size: 1.05rem; line-height: 1.25; }
+  .link .s { display: block; font-size: .9rem; line-height: 1.3; opacity: .8; overflow-wrap: anywhere; }
+  .primary { background: var(--accent); border-color: var(--accent); color: var(--ink); }
+  .ghost { background: transparent; color: #fff; }
+  .link:focus-visible, .tab:focus-visible, .close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+  dialog { border: 0; border-radius: 24px; padding: 24px; width: min(92vw, 380px); text-align: center; color: var(--ink); font-family: "Outfit", system-ui, sans-serif; }
+  dialog::backdrop { background: rgba(10, 25, 22, .8); }
+  .dtabs { display: flex; gap: 6px; background: #EEF1F0; padding: 4px; border-radius: 999px; margin-bottom: 20px; }
+  .dtab { flex: 1; font: inherit; font-weight: 600; font-size: .9rem; padding: 10px 8px; border: 0; border-radius: 999px; background: transparent; color: #55646B; cursor: pointer; }
+  .dtab[aria-selected="true"] { background: var(--bg); color: #fff; }
+  #qr { display: flex; justify-content: center; padding: 8px; background: #fff; }
+  #qr img, #qr canvas { max-width: 100%; height: auto; }
+  #qr-caption { margin: 14px 0 12px; font-size: .95rem; line-height: 1.4; }
+  .close { font: inherit; font-weight: 700; font-size: 1rem; background: none; border: 0; color: var(--btn); padding: 10px 16px; cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) { body { transition: none; } }
+</style>
+</head>
+<body data-theme="formation">
+<main class="page">
+  <div class="top">
+    <img class="logo" id="logo-formation" src="assets/logo-couleur.svg" alt="Ami’coop – Par le domicile, pour le domicile" width="443" height="206">
+    <img class="logo" id="logo-conseil" src="assets/logo-indigo.svg" alt="Ami’coop – Par le domicile, pour le domicile" width="443" height="206" hidden>
+  </div>
+
+  <section class="identity">
+    <img class="photo" src="assets/melissa.jpg" alt="Portrait de Melissa Ramon" width="128" height="128">
+    <h1>Melissa Ramon</h1>
+    <p class="role">Directrice Ami’coop</p>
+  </section>
+
+  <div class="tabs" role="tablist" aria-label="Choisir l’offre">
+    <button class="tab" role="tab" id="tab-formation" aria-controls="panel-formation" aria-selected="true" data-tab="formation">Formation</button>
+    <button class="tab" role="tab" id="tab-conseil" aria-controls="panel-conseil" aria-selected="false" data-tab="conseil" tabindex="-1">Conseil</button>
+  </div>
+
+  <div role="tabpanel" id="panel-formation" aria-labelledby="tab-formation">
+    <p class="intro">Des formations pour les professionnels de l’aide, de l’accompagnement et du soin à domicile.</p>
+    <ul class="links">
+      <li>
+        <a class="link" href="https://catalogue-amicial.dendreo.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg>
+          <span><span class="t">Catalogue des formations</span><span class="s">Dates, programmes et inscriptions</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.amicoop.fr/formation/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5zM6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>
+          <span><span class="t">Découvrir l’offre formation</span><span class="s">Intra, inter, analyse de la pratique</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div role="tabpanel" id="panel-conseil" aria-labelledby="tab-conseil" hidden>
+    <p class="intro">Un accompagnement par des professionnels du domicile pour les structures d’aide et de soins.</p>
+    <ul class="links">
+      <li>
+        <a class="link" href="https://www.amicoop.fr/conseil/#poles" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span><span class="t">Nos domaines d’intervention</span><span class="s">Finance, RH, qualité, pilotage, SI</span></span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.amicoop.fr/conseil/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+          <span><span class="t">Découvrir l’offre conseil</span><span class="s">Sur mesure, en 4 étapes</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <p class="contact-title">Me contacter</p>
+  <ul class="links">
+    <li>
+      <a class="link primary" href="melissa-ramon.vcf" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 20a7 7 0 0 1 14 0M19 8v6M16 11h6"/></svg>
+        <span><span class="t">Ajouter à mes contacts</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="tel:+33750547968">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <span><span class="t">Appeler</span><span class="s">07 50 54 79 68</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="mailto:melissa.ramon@amicoop.fr">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span><span class="t">Écrire un e-mail</span><span class="s">melissa.ramon@amicoop.fr</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://www.amicoop.fr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>
+        <span><span class="t">Site Ami’coop</span><span class="s">amicoop.fr</span></span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://www.linkedin.com/company/ami-coop" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V16M8 7.5v.01M12 16v-5.5M12 13c0-1.5 1-2.5 2.5-2.5S17 11.5 17 13v3"/></svg>
+        <span><span class="t">Ami’coop sur LinkedIn</span></span>
+      </a>
+    </li>
+    <li>
+      <button class="link ghost" type="button" id="open-qr">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2v2h-2zM14 18h2v2h-2zM18 18h2v2h-2z"/></svg>
+        <span><span class="t">Afficher mon QR code</span></span>
+      </button>
+    </li>
+  </ul>
+</main>
+
+<dialog id="qr-dialog" aria-label="QR code">
+  <div class="dtabs" role="tablist">
+    <button class="dtab" role="tab" aria-selected="true" data-mode="contact">Fiche contact</button>
+    <button class="dtab" role="tab" aria-selected="false" data-mode="page">Cette page</button>
+  </div>
+  <div id="qr"></div>
+  <p id="qr-caption"></p>
+  <button class="close" type="button" id="close-qr">Fermer</button>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  /* ----- Bascule Formation / Conseil ----- */
+  var THEME_COLORS = { formation: "#074C39", conseil: "#4458A4" };
+  var tabs = document.querySelectorAll(".tab");
+
+  function setTab(name, updateHash) {
+    if (!THEME_COLORS[name]) name = "formation";
+    document.body.setAttribute("data-theme", name);
+    document.getElementById("theme-color").setAttribute("content", THEME_COLORS[name]);
+    ["formation", "conseil"].forEach(function (n) {
+      var on = n === name;
+      document.getElementById("panel-" + n).hidden = !on;
+      document.getElementById("logo-" + n).hidden = !on;
+      var t = document.getElementById("tab-" + n);
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    if (updateHash) { try { history.replaceState(null, "", "#" + name); } catch (e) {} }
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () { setTab(t.dataset.tab, true); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        var other = t.dataset.tab === "formation" ? "conseil" : "formation";
+        setTab(other, true); document.getElementById("tab-" + other).focus();
+      }
+    });
+  });
+  window.addEventListener("hashchange", function () { setTab(location.hash.slice(1), false); });
+  setTab(location.hash.slice(1), false);
+
+  /* ----- QR code ----- */
+  // Fiche contact compacte (le QR de la fiche scanne directement dans le répertoire)
+  var VCARD = [
+    "BEGIN:VCARD", "VERSION:3.0",
+    "N:Ramon;Melissa;;;", "FN:Melissa Ramon",
+    "ORG:Ami'coop", "TITLE:Directrice Ami'coop",
+    "TEL;TYPE=CELL:+33750547968",
+    "EMAIL:melissa.ramon@amicoop.fr",
+    "URL:https://www.amicoop.fr",
+    "END:VCARD"
+  ].join("\n");
+
+  var dialog = document.getElementById("qr-dialog");
+  var box = document.getElementById("qr");
+  var caption = document.getElementById("qr-caption");
+  var dtabs = document.querySelectorAll(".dtab");
+
+  function draw(mode) {
+    var text = mode === "contact" ? VCARD : location.href;
+    caption.textContent = mode === "contact"
+      ? "Scannez avec l’appareil photo pour enregistrer le contact."
+      : "Scannez pour ouvrir cette carte de visite.";
+    box.innerHTML = "";
+    dtabs.forEach(function (t) { t.setAttribute("aria-selected", String(t.dataset.mode === mode)); });
+    if (typeof QRCode === "undefined") {
+      box.textContent = "Le QR code n’a pas pu se charger. Vérifiez la connexion et réessayez.";
+      return;
+    }
+    var size = Math.min(280, window.innerWidth - 120);
+    new QRCode(box, { text: text, width: size, height: size, correctLevel: QRCode.CorrectLevel.M });
+  }
+  document.getElementById("open-qr").addEventListener("click", function () { draw("contact"); dialog.showModal(); });
+  document.getElementById("close-qr").addEventListener("click", function () { dialog.close(); });
+  dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+  dtabs.forEach(function (t) { t.addEventListener("click", function () { draw(t.dataset.mode); }); });
+</script>
+</body>
+</html>
